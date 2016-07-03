@@ -15,6 +15,9 @@
 		330A7A9B1D28F296007FEABB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 330A7A991D28F296007FEABB /* LaunchScreen.storyboard */; };
 		330A7AA61D28F296007FEABB /* ThePuzzChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AA51D28F296007FEABB /* ThePuzzChatTests.swift */; };
 		330A7AB11D28F296007FEABB /* ThePuzzChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AB01D28F296007FEABB /* ThePuzzChatUITests.swift */; };
+		330A7ABF1D28F369007FEABB /* PuzzleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7ABE1D28F369007FEABB /* PuzzleManager.swift */; };
+		330A7AC11D28F52B007FEABB /* SolvePuzzleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */; };
+		330A7AC31D28F625007FEABB /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC21D28F625007FEABB /* Puzzle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		330A7AAC1D28F296007FEABB /* ThePuzzChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThePuzzChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		330A7AB01D28F296007FEABB /* ThePuzzChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThePuzzChatUITests.swift; sourceTree = "<group>"; };
 		330A7AB21D28F296007FEABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		330A7ABE1D28F369007FEABB /* PuzzleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleManager.swift; path = ../PuzzleManager.swift; sourceTree = "<group>"; };
+		330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvePuzzleVC.swift; sourceTree = "<group>"; };
+		330A7AC21D28F625007FEABB /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +105,11 @@
 		330A7A8C1D28F296007FEABB /* ThePuzzChat */ = {
 			isa = PBXGroup;
 			children = (
+				330A7AC21D28F625007FEABB /* Puzzle.swift */,
+				330A7ABE1D28F369007FEABB /* PuzzleManager.swift */,
 				330A7A8D1D28F296007FEABB /* AppDelegate.swift */,
 				330A7A8F1D28F296007FEABB /* ViewController.swift */,
+				330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */,
 				330A7A911D28F296007FEABB /* Main.storyboard */,
 				330A7A971D28F296007FEABB /* Assets.xcassets */,
 				330A7A991D28F296007FEABB /* LaunchScreen.storyboard */,
@@ -261,7 +270,10 @@
 			files = (
 				330A7A901D28F296007FEABB /* ViewController.swift in Sources */,
 				330A7A961D28F296007FEABB /* ThePuzzChat.xcdatamodeld in Sources */,
+				330A7AC11D28F52B007FEABB /* SolvePuzzleVC.swift in Sources */,
+				330A7AC31D28F625007FEABB /* Puzzle.swift in Sources */,
 				330A7A8E1D28F296007FEABB /* AppDelegate.swift in Sources */,
+				330A7ABF1D28F369007FEABB /* PuzzleManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
