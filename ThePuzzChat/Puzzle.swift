@@ -11,12 +11,13 @@ import UIKit
 
 class Puzzle: NSObject
 {
-    //Dimmensions of the puzzle between 3 and 10, always square
-    var dimmension: Int?
-    var image: UIImage?
+    //dimensions of the puzzle between 3 and 10, always square
+    let dimension: Int
+    let image: UIImage
+    var timer: NSTimer?
     
-    init(_dimmension: Int, _image: UIImage) {
-        dimmension = _dimmension
+    init(_dimension: Int, _image: UIImage) {
+        dimension = _dimension
         image = _image
     }
 }

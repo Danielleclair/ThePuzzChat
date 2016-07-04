@@ -18,6 +18,7 @@
 		330A7ABF1D28F369007FEABB /* PuzzleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7ABE1D28F369007FEABB /* PuzzleManager.swift */; };
 		330A7AC11D28F52B007FEABB /* SolvePuzzleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */; };
 		330A7AC31D28F625007FEABB /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC21D28F625007FEABB /* Puzzle.swift */; };
+		330A7AC71D2A14F8007FEABB /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC61D2A14F8007FEABB /* Tile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		330A7ABE1D28F369007FEABB /* PuzzleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PuzzleManager.swift; path = ../PuzzleManager.swift; sourceTree = "<group>"; };
 		330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvePuzzleVC.swift; sourceTree = "<group>"; };
 		330A7AC21D28F625007FEABB /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
+		330A7AC61D2A14F8007FEABB /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				330A7ABE1D28F369007FEABB /* PuzzleManager.swift */,
 				330A7A8D1D28F296007FEABB /* AppDelegate.swift */,
 				330A7A8F1D28F296007FEABB /* ViewController.swift */,
+				330A7AC61D2A14F8007FEABB /* Tile.swift */,
 				330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */,
 				330A7A911D28F296007FEABB /* Main.storyboard */,
 				330A7A971D28F296007FEABB /* Assets.xcassets */,
@@ -271,6 +274,7 @@
 				330A7A901D28F296007FEABB /* ViewController.swift in Sources */,
 				330A7A961D28F296007FEABB /* ThePuzzChat.xcdatamodeld in Sources */,
 				330A7AC11D28F52B007FEABB /* SolvePuzzleVC.swift in Sources */,
+				330A7AC71D2A14F8007FEABB /* Tile.swift in Sources */,
 				330A7AC31D28F625007FEABB /* Puzzle.swift in Sources */,
 				330A7A8E1D28F296007FEABB /* AppDelegate.swift in Sources */,
 				330A7ABF1D28F369007FEABB /* PuzzleManager.swift in Sources */,
@@ -498,6 +502,7 @@
 				330A7AB71D28F296007FEABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		330A7AB81D28F296007FEABB /* Build configuration list for PBXNativeTarget "ThePuzzChatTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +511,7 @@
 				330A7ABA1D28F296007FEABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		330A7ABB1D28F296007FEABB /* Build configuration list for PBXNativeTarget "ThePuzzChatUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +520,7 @@
 				330A7ABD1D28F296007FEABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
