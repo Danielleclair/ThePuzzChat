@@ -13,15 +13,17 @@ typealias Coordinate = (Int, Int)
 
 class Tile: NSObject
 {
-    let Image: UIImage?
-    let CorrectPosition: Coordinate? //Where the piece should be when the puzzle is complete
+    var Image: UIImageView?
     
-    var CurrentPosition: Coordinate? //Where the piece is currently
+    var isBlank = false
     
+    let CorrectPosition: Coordinate //Where the piece should be when the puzzle is complete
+    var CurrentPosition: Coordinate //Where the piece is currently
     
-    
-    init(_image: UIImage, _correctPosition: Coordinate) {
-        Image = _image
+    //Tiles are created with their current position being the correct position
+    init(_imageView: UIImageView, _correctPosition: Coordinate) {
+        Image = _imageView
         CorrectPosition = _correctPosition
+        CurrentPosition = _correctPosition
     }
 }
