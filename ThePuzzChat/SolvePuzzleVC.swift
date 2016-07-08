@@ -13,32 +13,51 @@ class SolvePuzzleVC: UIViewController
 {
     
     var puzzle: Puzzle?
+    var images: [UIImageView] = []
     
     override func viewDidLoad() {
     
         puzzle = Puzzle(_dimension: 5, _image: UIImage(named: "PuzzchatIcon.png")!, secondsCompletionTime: 60)
-        DisplayPuzzle(puzzle!)
+        
+        /*
+        for i in 0...10000000
+        {
+            DisplayPuzzle()
+        }
+*/
         
     }
     
     @IBOutlet weak var horizontalStack: UIStackView!
+    
     @IBAction func Display(sender: AnyObject) {
-        DisplayPuzzle(puzzle!)
+        updatePuzzleView()
     }
     
     @IBAction func shuffle(sender: AnyObject) {
-        puzzle!.Shuffle()
+       // puzzle!.Shuffle()
+        DisplayPuzzle()
     }
-    func DisplayPuzzle(puzzle: Puzzle)
+    
+    
+    
+    func DisplayPuzzle()
     {
+        
         //Remove any old views
-        for column in horizontalStack.arrangedSubviews
+        for column in horizontalStack.arrangedSubviews as! [UIStackView]
         {
+            for row in column.arrangedSubviews
+            {
+                horizontalStack.removeArrangedSubview(row)
+                row.removeFromSuperview()
+            }
+            horizontalStack.removeArrangedSubview(column)
             column.removeFromSuperview()
         }
-        
+
         //Width
-        for i in 0..<puzzle.dimension
+        for i in 0..<puzzle!.dimension
         {
             let verticalStack = UIStackView()
             verticalStack.axis = .Vertical
@@ -46,19 +65,18 @@ class SolvePuzzleVC: UIViewController
             verticalStack.distribution = .FillEqually
             
             //Height
-            for j in 0..<puzzle.dimension
+            for j in 0..<puzzle!.dimension
             {
-                let tile = puzzle.puzzle[i][j]
-                if (tile != nil)
+                if (puzzle!.puzzle[i][j] != nil)
                 {
-                    if (tile!.isBlank == true)
+                    if (puzzle!.puzzle[i][j]!.isBlank == true)
                     {
                         verticalStack.addArrangedSubview(UIView())
                     }
-                    else if (tile!.Image != nil)
+                    else if (puzzle!.puzzle[i][j]!.Image != nil)
                     {
-                        addSwipeGestureRecognizerToImage(tile!.Image!)
-                        verticalStack.addArrangedSubview(tile!.Image!)
+                        // addSwipeGestureRecognizerToImage(puzzle!.puzzle[i][j]!.Image!)
+                        verticalStack.addArrangedSubview(puzzle!.puzzle[i][j]!.Image!)
                     }
                 }
                 else //This is the blank piece
@@ -66,70 +84,18 @@ class SolvePuzzleVC: UIViewController
                     
                 }
             }
-
+            
             horizontalStack.addArrangedSubview(verticalStack)
         }
+ 
     }
     
-    /*
-    //Sets up the puzzle in the view
-    func CreatePuzzle(inout puzzle: Puzzle)
+    private func updatePuzzleView()
     {
-            //Get the height & width of each tile by breaking the total size by
-            //the number of tiles
-            print(puzzle.image.size.width)
-            print(puzzle.image.size.height)
-        
-            let tileWidth = puzzle.image.size.width / CGFloat(puzzle.dimension)
-            let tileHeight = puzzle.image.size.height / CGFloat(puzzle.dimension)
-        
-            print(tileWidth)
-            print(tileHeight)
-            
-            //Width
-            for i in 0..<puzzle.dimension
-            {
-                let verticalStack = UIStackView()
-                verticalStack.axis = .Vertical
-                verticalStack.alignment = .Fill
-                verticalStack.distribution = .FillEqually
-                
-                //Height
-                for j in 0..<puzzle.dimension
-                {
-                    
-                    //Create the position of the new image
-                    let imagePositioning = CGRectMake(tileWidth * CGFloat(i), tileHeight * CGFloat(j), tileWidth, tileHeight)
-                    
-                    let tileImage = CGImageCreateWithImageInRect(puzzle.image.CGImage, imagePositioning)
-                    
-                    let img = UIImage(CGImage: tileImage!)
-                    let imgView = UIImageView(image: img)
-                    imgView.tag = (i + (j * puzzle.dimension))
-                    imgView.userInteractionEnabled = true
-                    
-                    addSwipeGestureRecognizerToImage(imgView)
-                    
-                    //Create the correct coordinate
-                    let coordinate = Coordinate(i, j)
-                    
-                    //Create the new tile
-                    let tile = Tile(_imageView: imgView, _correctPosition: coordinate)
-                    
-                    if (imgView.tag < puzzle.tiles.count)
-                    {
-                        puzzle.tiles[imgView.tag] = tile
-                    }
-                    
-                    imgView.layer.borderWidth = 1.0
-                    
-                    verticalStack.addArrangedSubview(imgView)
-                }
-                
-                horizontalStack.addArrangedSubview(verticalStack)
-            }
+      puzzle?.puzzle[1][1]!.Image = UIImageView(image: UIImage(named: "Daniel"))
     }
- */
+    
+
  
     //------------------------------------------------------------------------------------------
     //Add the swipe gesture recognizers to the image view
@@ -146,6 +112,18 @@ class SolvePuzzleVC: UIViewController
         }
     }
     
+    private func removeSwipeGestureRecognizerFromImage(imgView: UIImageView)
+    {
+        let directions: [UISwipeGestureRecognizerDirection] = [.Up, .Down, .Right, .Left]
+        for direction in directions
+        {
+            let swipeRecognizer = UISwipeGestureRecognizer()
+            swipeRecognizer.direction = direction
+            swipeRecognizer.addTarget(self, action: #selector(SolvePuzzleVC.tileWasSwiped))
+            imgView.removeGestureRecognizer(swipeRecognizer)
+        }
+    }
+    
     //------------------------------------------------------------------------------------------
     //Called when a tile is swiped
     //------------------------------------------------------------------------------------------
@@ -157,22 +135,22 @@ class SolvePuzzleVC: UIViewController
             {
                
                 puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Up)
-                DisplayPuzzle(puzzle!)
+                DisplayPuzzle()
             }
             if (swipeRecognizer.direction == .Down)
             {
                 puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Down)
-                DisplayPuzzle(puzzle!)
+                DisplayPuzzle()
             }
             if (swipeRecognizer.direction == .Left)
             {
                 puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Left)
-                DisplayPuzzle(puzzle!)
+                DisplayPuzzle()
             }
             if (swipeRecognizer.direction == .Right)
             {
                 puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Right)
-                DisplayPuzzle(puzzle!)
+                DisplayPuzzle()
             }
         }
     }

@@ -21,8 +21,9 @@ class Puzzle: NSObject
 {
     //dimensions of the puzzle between 3 and 10, always square
     let dimension: Int
-    private var tiles : [Tile?] //Hash table of tiles indexed by their view tag
+    var tiles : [Tile?] //Hash table of tiles indexed by their view tag
     var puzzle = [[Tile?]]()
+    var grid = [[Tile?]]()
     let image: UIImage
     var timer: NSTimer?
     var timerSeconds: Int
@@ -94,21 +95,6 @@ class Puzzle: NSObject
             let rand = Int((arc4random_uniform(UInt32(tiles.count - 1))))
             
             swapTile(&tiles[i]!, withTile: &tiles[rand]!)
-            
-            
-            /*
-            //Disallow swaps of the same element
-            if (rand != i)
-            {
-                swap(&puzzle[tiles[i]!.CurrentPosition.0][tiles[i]!.CurrentPosition.1], &puzzle[tiles[rand]!.CurrentPosition.0][tiles[rand]!.CurrentPosition.1])
-    
-                //Swap the current positions in the hash table
-                let randTileCords = tiles[rand]!.CurrentPosition
-                let iTileCords = tiles[i]!.CurrentPosition
-                tiles[rand]!.CurrentPosition = iTileCords
-                tiles[i]!.CurrentPosition = randTileCords
-            }
- */
         }
     }
     
