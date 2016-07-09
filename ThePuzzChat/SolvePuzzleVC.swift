@@ -17,7 +17,12 @@ class SolvePuzzleVC: UIViewController
     
     override func viewDidLoad() {
 
-        puzzle = Puzzle(_dimension: 5, _image: UIImage(named: "PuzzchatIcon.png")!, secondsCompletionTime: 60, _delegate: self)
+        puzzle = Puzzle(_dimension: 3, _image: UIImage(named: "PuzzchatIcon.png")!, secondsCompletionTime: 60, _delegate: self)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        DisplayPuzzle()
     }
     
     @IBOutlet weak var puzzleView: UIView!
@@ -37,7 +42,7 @@ class SolvePuzzleVC: UIViewController
             //Get the size of the view
             let viewHeight = puzzleView.frame.size.height
             let viewWidth = puzzleView.frame.size.width
-            
+        
             //Get the size of the tiles
             let tileHeight = (viewHeight / CGFloat(puzzle!.dimension))
             let tileWidth = (viewWidth / CGFloat(puzzle!.dimension))

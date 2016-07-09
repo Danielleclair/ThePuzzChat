@@ -1,5 +1,5 @@
 //
-//  PuzzVC.swift
+//  AccountVC.swift
 //  ThePuzzChat
 //
 //  Created by Danielle Rosaia on 7/9/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PuzzVC: UIViewController {
+class AccountVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

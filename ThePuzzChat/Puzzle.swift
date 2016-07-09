@@ -23,11 +23,12 @@ class Puzzle: NSObject
     let dimension: Int
     var tiles : [Tile?] //Hash table of tiles indexed by their view tag
     var puzzle = [[Tile?]]()
-    var grid = [[Tile?]]()
     let image: UIImage
     var timer: NSTimer?
     var timerSeconds: Int
     var delegate: UIViewController
+    
+    var tilesInCorrectPosition = 0
     
     //--------------------------------------------------------------------------
     //Constructor
@@ -106,11 +107,29 @@ class Puzzle: NSObject
     //--------------------------------------------------------------------------
     func Shuffle()
     {
+        tilesInCorrectPosition = 0
+        
         for i in 0..<tiles.count
         {
             let rand = Int((arc4random_uniform(UInt32(tiles.count - 1))))
             
             swapTile(&tiles[i]!, withTile: &tiles[rand]!)
+        }
+        
+        //Add to the correct count
+        for tile in tiles
+        {
+            if (isInCorrectPosition(tile!))
+            {
+                tilesInCorrectPosition += 1
+            }
+        }
+        
+        print(tilesInCorrectPosition)
+        
+        if (checkWinCondition())
+        {
+            Shuffle()
         }
     }
     
@@ -161,7 +180,7 @@ class Puzzle: NSObject
                 return false
             }
         }
-        else if (direction == .Down && tile.CurrentPosition.1 < dimension)
+        else if (direction == .Down && tile.CurrentPosition.1 < dimension - 1)
         {
             //Check to see if there is space to move the piece into, and that the piece selected to move exists
             if(puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1 + 1]!.isBlank && !puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1]!.isBlank)
@@ -193,8 +212,10 @@ class Puzzle: NSObject
                 return false
             }
         }
-        else if (direction == .Right && tile.CurrentPosition.0 < dimension)
+        else if (direction == .Right && tile.CurrentPosition.0 < dimension - 1)
         {
+            print(tile.CurrentPosition)
+            
             //Check to see if there is space to move the piece into, and that the piece selected to move exists
             if(puzzle[tile.CurrentPosition.0 + 1][tile.CurrentPosition.1]!.isBlank && !puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1]!.isBlank)
             {
@@ -214,6 +235,17 @@ class Puzzle: NSObject
     
     private func swapTile(inout tile: Tile, inout withTile: Tile)
     {
+        var correctPos = 0
+        
+        if (isInCorrectPosition(tile))
+        {
+            correctPos += 1
+        }
+        if (isInCorrectPosition(withTile))
+        {
+            correctPos += 1
+        }
+        
         //Disallow swaps of the same element
         if (tile.CurrentPosition != withTile.CurrentPosition)
         {
@@ -225,7 +257,45 @@ class Puzzle: NSObject
             withTile.CurrentPosition = iTileCords
             tile.CurrentPosition = randTileCords
         }
-
+        
+        if (isInCorrectPosition(tile))
+        {
+            correctPos -= 1
+        }
+        if (isInCorrectPosition(withTile))
+        {
+            correctPos -= 1
+        }
+        
+        tilesInCorrectPosition +=  correctPos
+        
+        print(tilesInCorrectPosition)
+    }
+    
+    private func isInCorrectPosition(tile: Tile) -> Bool
+    {
+        print(tile.CurrentPosition)
+        print(tile.CorrectPosition)
+        if (tile.CorrectPosition == tile.CurrentPosition)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
+    private func checkWinCondition() -> Bool
+    {
+        if (tilesInCorrectPosition == (dimension * dimension))
+        {
+            //Win condition met
+            return true
+        }
+        
+        return false
+        
     }
     
    
