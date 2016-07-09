@@ -27,12 +27,14 @@ class Puzzle: NSObject
     let image: UIImage
     var timer: NSTimer?
     var timerSeconds: Int
+    var delegate: UIViewController
     
     //--------------------------------------------------------------------------
     //Constructor
     //--------------------------------------------------------------------------
-    init(_dimension: Int, _image: UIImage, secondsCompletionTime: Int) {
+    init(_dimension: Int, _image: UIImage, secondsCompletionTime: Int, _delegate: UIViewController) {
         
+        delegate = _delegate
         dimension = _dimension
         timerSeconds = secondsCompletionTime
         image = _image
@@ -44,6 +46,8 @@ class Puzzle: NSObject
         {
             puzzle.append([Tile?](count: dimension, repeatedValue: nil))
         }
+        
+        super.init()
     
         //Get the height & width of each tile by breaking the total size by
         //the number of tiles
@@ -61,17 +65,29 @@ class Puzzle: NSObject
                 
                 let tileImage = CGImageCreateWithImageInRect(image.CGImage, imagePositioning)
                 
-                let img = UIImage(CGImage: tileImage!)
-                let imgView = UIImageView(image: img)
+                var imgView: UIImageView
+                
+                if(i == 0 && j == 0)
+                {
+                    imgView = UIImageView()
+                }
+                else
+                {
+                    let img = UIImage(CGImage: tileImage!)
+                    imgView = UIImageView(image: img)
+                }
+                
                 imgView.tag = (i + (j * dimension))
                 imgView.userInteractionEnabled = true
+                addSwipeGestureRecognizerToImage(imgView)
                 
                 //Create the correct coordinate
                 let coordinate = Coordinate(i, j)
                 
                 //Create the new tile
                 let tile = Tile(_imageView: imgView, _correctPosition: coordinate)
-                if(i == 0 && j == 0)
+        
+                if (i == 0 && j == 0)
                 {
                     tile.isBlank = true
                 }
@@ -97,6 +113,22 @@ class Puzzle: NSObject
             swapTile(&tiles[i]!, withTile: &tiles[rand]!)
         }
     }
+    
+    //------------------------------------------------------------------------------------------
+    //Add the swipe gesture recognizers to the image view
+    //------------------------------------------------------------------------------------------
+    private func addSwipeGestureRecognizerToImage(imgView: UIImageView)
+    {
+        let directions: [UISwipeGestureRecognizerDirection] = [.Up, .Down, .Right, .Left]
+        for direction in directions
+        {
+            let swipeRecognizer = UISwipeGestureRecognizer()
+            swipeRecognizer.direction = direction
+            swipeRecognizer.addTarget(delegate, action: #selector(SolvePuzzleVC.tileWasSwiped))
+            imgView.addGestureRecognizer(swipeRecognizer)
+        }
+    }
+
     
     //--------------------------------------------------------------------------
     //Updates the puzzle by moving the tile with the given tag in a direction.
@@ -195,4 +227,7 @@ class Puzzle: NSObject
         }
 
     }
+    
+   
+
 }
