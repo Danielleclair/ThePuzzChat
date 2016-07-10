@@ -33,8 +33,6 @@ class SolvePuzzleVC: UIViewController
         DisplayPuzzle()
     }
     
-    
-    
     func DisplayPuzzle()
     {
         if (puzzle != nil)

@@ -9,111 +9,131 @@
 import Foundation
 import UIKit
 
-class HomeScreenScrollVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPageViewControllerDataSource
 {
     var selectedIndex = 0
     var tabButtons: [UIButton] = []
+    var views: [UIViewController] = []
     
-    @IBOutlet weak var tabBar: UIView!
+  //  @IBOutlet weak var tabBar: UIView!
     
     override func viewDidLoad() {
         
-        //scrollView.translatesAutoresizingMaskIntoConstraints = true
         
-        //let puzzVC = self.storyboard!.instantiateViewControllerWithIdentifier("Test")
-        let puzzVC = UIViewController(nibName: "PuzzVC", bundle: nil)
-        self.addChildViewController(puzzVC)
-        self.scrollView.addSubview(puzzVC.view)
-        puzzVC.didMoveToParentViewController(self)
+        dataSource = self
         
-        let storeVC = UIViewController(nibName: "StoreVC", bundle: nil)
-        var storeFrame = storeVC.view.frame
-        storeFrame.origin.x = self.view.frame.width
-        storeVC.view.frame = storeFrame
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PuzzView")]
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FriendsView")]
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StoreView")]
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AccountView")]
         
-        self.addChildViewController(storeVC)
-        self.scrollView.addSubview(storeVC.view)
-        storeVC.didMoveToParentViewController(self)
+        setViewControllers(([views.first!]), direction: .Forward, animated: false, completion: nil)
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
-        let friendsVC = UIViewController(nibName: "FriendsVC", bundle: nil)
+        if let indexOfCurrentView = views.indexOf(viewController)
+        {
+            let indexBeforeCurrentView = indexOfCurrentView - 1
+            
+            if (indexBeforeCurrentView < 0)
+            {
+                return nil
+            }
+            else
+            {
+                return views[indexBeforeCurrentView]
+            }
+        }
+        else
+        {
+            return nil
+        }
         
-        var friendsFrame = friendsVC.view.frame
-        friendsFrame.origin.x = self.view.frame.width * 2
-        friendsVC.view.frame = friendsFrame
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
-        self.addChildViewController(friendsVC)
-        self.scrollView.addSubview(friendsVC.view)
-        storeVC.didMoveToParentViewController(self)
-        
-        let accountVC = UIViewController(nibName: "AccountVC", bundle: nil)
-        
-        var accountFrame = accountVC.view.frame
-        accountFrame.origin.x = self.view.frame.width * 3
-        accountVC.view.frame = accountFrame
-        
-        self.addChildViewController(accountVC)
-        self.scrollView.addSubview(accountVC.view)
-        storeVC.didMoveToParentViewController(self)
+        if let indexOfCurrentView = views.indexOf(viewController)
+        {
+            let indexAfterCurrentView = indexOfCurrentView + 1
+            
+            if (indexAfterCurrentView == views.count)
+            {
+                return nil
+            }
+            else
+            {
+                return views[indexAfterCurrentView]
+            }
+        }
+        else
+        {
+            return nil
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         
+        let viewHeight = self.view.frame.height
+        let viewWidth = self.view.frame.width
+        
+        let tabBarHeight = viewHeight / 10
+        
+        let tabBar = UIView(frame: CGRectMake(0, viewHeight - tabBarHeight, viewWidth, tabBarHeight))
+     
+        self.view.addSubview(tabBar)
+     
         let puzzButton = UIButton(frame: CGRectMake(0, 0, tabBar.frame.width / 5, tabBar.frame.height))
         puzzButton.setImage(UIImage(named: "PuzzIconSelected"), forState: .Normal)
-        puzzButton.addTarget(self, action: #selector(HomeScreenScrollVC.navigateToPuzzView), forControlEvents: .TouchUpInside)
+        puzzButton.addTarget(self, action: #selector(HomeScreenVC.navigateToPuzzView), forControlEvents: .TouchUpInside)
         tabBar.addSubview(puzzButton)
         tabButtons += [puzzButton]
         
         let friendsButton = UIButton(frame: CGRectMake(tabBar.frame.width / 5, 0, tabBar.frame.width / 5, tabBar.frame.height))
         friendsButton.setImage(UIImage(named: "FriendsIconSelected"), forState: .Normal)
-        friendsButton.addTarget(self, action: #selector(HomeScreenScrollVC.navigateToFriendsView), forControlEvents: .TouchUpInside)
+        friendsButton.addTarget(self, action: #selector(HomeScreenVC.navigateToFriendsView), forControlEvents: .TouchUpInside)
         tabBar.addSubview(friendsButton)
         tabButtons += [friendsButton]
          
         let newPuzzButton = UIButton(frame: CGRectMake((tabBar.frame.width / 5) * 2, 0, tabBar.frame.width / 5, tabBar.frame.height))
         newPuzzButton.setImage(UIImage(named: "CreateNewPuzz"), forState: .Normal)
-        newPuzzButton.addTarget(self, action: #selector(HomeScreenScrollVC.CreateNewPuzz), forControlEvents: .TouchUpInside)
+        newPuzzButton.addTarget(self, action: #selector(HomeScreenVC.CreateNewPuzz), forControlEvents: .TouchUpInside)
         tabBar.addSubview(newPuzzButton)
         tabButtons += [newPuzzButton]
          
         let storeButton = UIButton(frame: CGRectMake((tabBar.frame.width / 5) * 3, 0, tabBar.frame.width / 5, tabBar.frame.height))
         storeButton.setImage(UIImage(named: "StoreTabSelected"), forState: .Normal)
-        storeButton.addTarget(self, action: #selector(HomeScreenScrollVC.navigateToStoreView), forControlEvents: .TouchUpInside)
+        storeButton.addTarget(self, action: #selector(HomeScreenVC.navigateToStoreView), forControlEvents: .TouchUpInside)
         tabBar.addSubview(storeButton)
         tabButtons += [storeButton]
          
         let accountButton = UIButton(frame: CGRectMake((tabBar.frame.width / 5) * 4, 0, tabBar.frame.width / 5, tabBar.frame.height))
         accountButton.setImage(UIImage(named: "AccountIconSelected"), forState: .Normal)
-        accountButton.addTarget(self, action: #selector(HomeScreenScrollVC.navigateToAccountView), forControlEvents: .TouchUpInside)
+        accountButton.addTarget(self, action: #selector(HomeScreenVC.navigateToAccountView), forControlEvents: .TouchUpInside)
         tabBar.addSubview(accountButton)
         tabButtons += [accountButton]
-        
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * 4, self.view.frame.size.height)
     }
+    
     
     func navigateToPuzzView()
     {
-        scrollToPage(0)
+        setViewControllers(([views[0]]), direction: .Forward, animated: false, completion: nil)
     }
     
     func navigateToFriendsView()
     {
-        scrollToPage(1)
+        setViewControllers(([views[1]]), direction: .Forward, animated: false, completion: nil)
     }
     
     func navigateToStoreView()
     {
-        scrollToPage(2)
+        setViewControllers(([views[2]]), direction: .Forward, animated: false, completion: nil)
     }
     
     func navigateToAccountView()
     {
-        scrollToPage(3)
-    }
-    
-    private func scrollToPage(pageNumber: Int)
-    {
-        scrollView.contentOffset = CGPointMake(self.view.frame.width * CGFloat(pageNumber), 0)
+        setViewControllers(([views[3]]), direction: .Forward, animated: false, completion: nil)
     }
     
     func CreateNewPuzz()
@@ -149,6 +169,4 @@ class HomeScreenScrollVC: UIViewController, UIImagePickerControllerDelegate, UIN
    
     
     
-    
-    @IBOutlet weak var scrollView: UIScrollView!
 }

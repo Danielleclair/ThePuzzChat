@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gg6-ne-IU3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eDK-k8-LKq">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -344,142 +343,6 @@
             </objects>
             <point key="canvasLocation" x="1545" y="-32.25"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="jLc-xl-Rno">
-            <objects>
-                <viewController storyboardIdentifier="Test" id="nCc-9A-rMx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J7d-lo-l5r"/>
-                        <viewControllerLayoutGuide type="bottom" id="LWC-zg-oOc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="UWQ-oY-Skc">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mike McCoy is a Great Person!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaU-bL-vpY">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="VhS-pU-DG0"/>
-                                    <constraint firstAttribute="width" constant="269" id="gIy-MP-5ph"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VhS-pU-DG0"/>
-                                        <exclude reference="gIy-MP-5ph"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="VhS-pU-DG0"/>
-                                        <include reference="gIy-MP-5ph"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="aaU-bL-vpY" firstAttribute="centerX" secondItem="UWQ-oY-Skc" secondAttribute="centerX" id="MWL-PZ-HuM"/>
-                            <constraint firstItem="aaU-bL-vpY" firstAttribute="centerY" secondItem="UWQ-oY-Skc" secondAttribute="centerY" id="OAv-3l-Dh1"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="aaU-bL-vpY"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="MWL-PZ-HuM"/>
-                                <exclude reference="OAv-3l-Dh1"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="aaU-bL-vpY"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="MWL-PZ-HuM"/>
-                                <include reference="OAv-3l-Dh1"/>
-                            </mask>
-                        </variation>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iSJ-5G-ABN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2709" y="-756.75"/>
-        </scene>
-        <!--Home Screen ScrollVC-->
-        <scene sceneID="MDp-aX-TiN">
-            <objects>
-                <viewController id="Gg6-ne-IU3" customClass="HomeScreenScrollVC" customModule="ThePuzzChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="k1g-Sj-nDE"/>
-                        <viewControllerLayoutGuide type="bottom" id="2GN-hw-jqJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="abq-uD-sgh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1c-Fp-uiC">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1P-DL-Xob">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="E1c-Fp-uiC" firstAttribute="leading" secondItem="abq-uD-sgh" secondAttribute="leading" id="BUB-5g-EWl"/>
-                            <constraint firstAttribute="trailing" secondItem="E1c-Fp-uiC" secondAttribute="trailing" id="Kvo-Qh-wsJ"/>
-                            <constraint firstItem="2GN-hw-jqJ" firstAttribute="top" secondItem="E1c-Fp-uiC" secondAttribute="bottom" id="NOq-X1-FJN"/>
-                            <constraint firstItem="B1P-DL-Xob" firstAttribute="height" secondItem="abq-uD-sgh" secondAttribute="height" multiplier="0.1" id="Y2g-Oj-HbQ"/>
-                            <constraint firstAttribute="trailing" secondItem="B1P-DL-Xob" secondAttribute="trailing" id="b7M-Je-S7u"/>
-                            <constraint firstItem="E1c-Fp-uiC" firstAttribute="top" secondItem="abq-uD-sgh" secondAttribute="top" id="jVx-fW-dIU"/>
-                            <constraint firstItem="2GN-hw-jqJ" firstAttribute="top" secondItem="B1P-DL-Xob" secondAttribute="bottom" id="kfM-2K-fpw"/>
-                            <constraint firstItem="B1P-DL-Xob" firstAttribute="leading" secondItem="abq-uD-sgh" secondAttribute="leading" id="m7C-3p-nID"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="E1c-Fp-uiC"/>
-                                <exclude reference="B1P-DL-Xob"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="BUB-5g-EWl"/>
-                                <exclude reference="Kvo-Qh-wsJ"/>
-                                <exclude reference="jVx-fW-dIU"/>
-                                <exclude reference="Y2g-Oj-HbQ"/>
-                                <exclude reference="b7M-Je-S7u"/>
-                                <exclude reference="m7C-3p-nID"/>
-                                <exclude reference="NOq-X1-FJN"/>
-                                <exclude reference="kfM-2K-fpw"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="E1c-Fp-uiC"/>
-                                <include reference="B1P-DL-Xob"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="BUB-5g-EWl"/>
-                                <include reference="Kvo-Qh-wsJ"/>
-                                <include reference="jVx-fW-dIU"/>
-                                <include reference="Y2g-Oj-HbQ"/>
-                                <include reference="b7M-Je-S7u"/>
-                                <include reference="m7C-3p-nID"/>
-                                <include reference="NOq-X1-FJN"/>
-                                <include reference="kfM-2K-fpw"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="scrollView" destination="E1c-Fp-uiC" id="iVw-1D-7XQ"/>
-                        <outlet property="tabBar" destination="B1P-DL-Xob" id="g9M-ql-nhy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VlO-uE-Frr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2709" y="-22.5"/>
-        </scene>
         <!--Store-->
         <scene sceneID="usb-K6-POl">
             <objects>
@@ -652,7 +515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbD-k7-RhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4281" y="603.75"/>
+            <point key="canvasLocation" x="4983" y="602.25"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qZB-On-jH1">
@@ -943,6 +806,82 @@
             </objects>
             <point key="canvasLocation" x="1500" y="-778.5"/>
         </scene>
+        <!--Home ScreenVC-->
+        <scene sceneID="lXY-ZI-ajt">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="eDK-k8-LKq" customClass="HomeScreenVC" customModule="ThePuzzChat" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kCc-aU-1fp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2917.5" y="-726"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="adp-pS-xia">
+            <objects>
+                <viewController storyboardIdentifier="PuzzView" id="vbs-1U-oQ8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iob-pK-JYc"/>
+                        <viewControllerLayoutGuide type="bottom" id="woD-2u-vhD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8k6-6c-eQR">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.03079350443" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a5L-tA-XXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2226" y="-37.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fzv-M6-Y3r">
+            <objects>
+                <viewController storyboardIdentifier="FriendsView" id="I8w-KD-Dfm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nMC-lX-ePg"/>
+                        <viewControllerLayoutGuide type="bottom" id="AGJ-Lr-77i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gsd-Ay-7YS">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.99792803340000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FSY-p3-4Fo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2889" y="-37.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HPy-Mn-Jjr">
+            <objects>
+                <viewController storyboardIdentifier="StoreView" id="Lzl-yS-tCn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2CV-iq-QK3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qif-Iv-XRs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eX5-Hx-hBC">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.081811456379999994" green="0.41199039500000001" blue="0.048338008549999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MgA-HH-qh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3570" y="-39"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="y6g-ld-X4r">
+            <objects>
+                <viewController storyboardIdentifier="AccountView" id="GF2-cV-Jdq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1UE-9D-mal"/>
+                        <viewControllerLayoutGuide type="bottom" id="sq6-gi-C4A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4U6-bD-ZhU">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.11318869669999999" green="0.14922234200000001" blue="0.35714577879999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zp-jQ-EgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4317" y="-39"/>
+        </scene>
         <!--Solve PuzzleVC-->
         <scene sceneID="HQc-JR-Oge">
             <objects>
@@ -1057,7 +996,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7q-ai-SRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4906.5" y="-238.5"/>
+            <point key="canvasLocation" x="5617.5" y="-706.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="62M-bx-9vX">
@@ -1271,7 +1210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2TQ-OA-Sni" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4263" y="-446.25"/>
+            <point key="canvasLocation" x="4875" y="-1191.75"/>
         </scene>
     </scenes>
     <resources>
