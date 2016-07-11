@@ -19,6 +19,9 @@
 		330A7AC11D28F52B007FEABB /* SolvePuzzleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */; };
 		330A7AC31D28F625007FEABB /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC21D28F625007FEABB /* Puzzle.swift */; };
 		330A7AC71D2A14F8007FEABB /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A7AC61D2A14F8007FEABB /* Tile.swift */; };
+		33A62E851D333747005579AE /* PuzzVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A62E841D333747005579AE /* PuzzVC.swift */; };
+		33A62E871D333F19005579AE /* MessageCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A62E861D333F19005579AE /* MessageCellVC.swift */; };
+		33A62E8B1D334446005579AE /* FriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A62E8A1D334446005579AE /* FriendsListVC.swift */; };
 		33ADABAD1D30DBDB00202695 /* HomeScreenScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ADABAC1D30DBDB00202695 /* HomeScreenScrollVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvePuzzleVC.swift; sourceTree = "<group>"; };
 		330A7AC21D28F625007FEABB /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		330A7AC61D2A14F8007FEABB /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		33A62E841D333747005579AE /* PuzzVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzVC.swift; sourceTree = "<group>"; };
+		33A62E861D333F19005579AE /* MessageCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellVC.swift; sourceTree = "<group>"; };
+		33A62E8A1D334446005579AE /* FriendsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsListVC.swift; path = ../FriendsListVC.swift; sourceTree = "<group>"; };
 		33ADABAC1D30DBDB00202695 /* HomeScreenScrollVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenScrollVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,15 +118,18 @@
 				330A7AC21D28F625007FEABB /* Puzzle.swift */,
 				330A7ABE1D28F369007FEABB /* PuzzleManager.swift */,
 				330A7A8D1D28F296007FEABB /* AppDelegate.swift */,
+				33A62E8A1D334446005579AE /* FriendsListVC.swift */,
 				330A7A8F1D28F296007FEABB /* ViewController.swift */,
 				330A7AC61D2A14F8007FEABB /* Tile.swift */,
 				33ADABAC1D30DBDB00202695 /* HomeScreenScrollVC.swift */,
 				330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */,
 				330A7A911D28F296007FEABB /* Main.storyboard */,
+				33A62E861D333F19005579AE /* MessageCellVC.swift */,
 				330A7A971D28F296007FEABB /* Assets.xcassets */,
 				330A7A991D28F296007FEABB /* LaunchScreen.storyboard */,
 				330A7A9C1D28F296007FEABB /* Info.plist */,
 				330A7A941D28F296007FEABB /* ThePuzzChat.xcdatamodeld */,
+				33A62E841D333747005579AE /* PuzzVC.swift */,
 			);
 			path = ThePuzzChat;
 			sourceTree = "<group>";
@@ -275,9 +284,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A62E871D333F19005579AE /* MessageCellVC.swift in Sources */,
 				330A7A901D28F296007FEABB /* ViewController.swift in Sources */,
 				330A7A961D28F296007FEABB /* ThePuzzChat.xcdatamodeld in Sources */,
+				33A62E8B1D334446005579AE /* FriendsListVC.swift in Sources */,
 				330A7AC11D28F52B007FEABB /* SolvePuzzleVC.swift in Sources */,
+				33A62E851D333747005579AE /* PuzzVC.swift in Sources */,
 				33ADABAD1D30DBDB00202695 /* HomeScreenScrollVC.swift in Sources */,
 				330A7AC71D2A14F8007FEABB /* Tile.swift in Sources */,
 				330A7AC31D28F625007FEABB /* Puzzle.swift in Sources */,

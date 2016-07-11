@@ -79,10 +79,22 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
         let viewWidth = self.view.frame.width
         
         let tabBarHeight = viewHeight / 10
+        let accountBarHeight = viewHeight / 20
         
         let tabBar = UIView(frame: CGRectMake(0, viewHeight - tabBarHeight, viewWidth, tabBarHeight))
-     
+        let accountBar = UIView(frame: CGRectMake(0, 20, viewWidth, accountBarHeight))
+        
         self.view.addSubview(tabBar)
+        self.view.addSubview(accountBar)
+        
+        let puzzPoint = UIImageView(image: UIImage(named: "PuzzPoint"))
+        puzzPoint.frame = CGRectMake(viewWidth / 25, 0, accountBarHeight, accountBarHeight)
+        accountBar.addSubview(puzzPoint)
+        
+        let puzzPointLabel = UILabel(frame: CGRectMake((viewWidth / 25) + accountBarHeight, 0, viewWidth / 4, accountBarHeight))
+        puzzPointLabel.text = "1000"
+        puzzPointLabel.textColor = UIColor.whiteColor()
+        accountBar.addSubview(puzzPointLabel)
      
         let puzzButton = UIButton(frame: CGRectMake(0, 0, tabBar.frame.width / 5, tabBar.frame.height))
         puzzButton.setImage(UIImage(named: "PuzzIconSelected"), forState: .Normal)
@@ -115,7 +127,6 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
         tabButtons += [accountButton]
     }
     
-    
     func navigateToPuzzView()
     {
         setViewControllers(([views[0]]), direction: .Forward, animated: false, completion: nil)
@@ -147,8 +158,6 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
             imagePicker.allowsEditing = false
-            
-
             
             var overlayFrame = imagePicker.view.bounds
             UIGraphicsBeginImageContext(overlayFrame.size)

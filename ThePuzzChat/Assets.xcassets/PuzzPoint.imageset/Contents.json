@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Robot.png",
+      "filename" : "PuzzPoint.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "PuzzPoint@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "PuzzPoint@3x.png",
       "scale" : "3x"
     }
   ],
