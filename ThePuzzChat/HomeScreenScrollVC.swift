@@ -84,6 +84,8 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
         let tabBar = UIView(frame: CGRectMake(0, viewHeight - tabBarHeight, viewWidth, tabBarHeight))
         let accountBar = UIView(frame: CGRectMake(0, 20, viewWidth, accountBarHeight))
         
+        tabBar.backgroundColor = UIColor.darkGrayColor()
+        
         self.view.addSubview(tabBar)
         self.view.addSubview(accountBar)
         
@@ -150,8 +152,6 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
     func CreateNewPuzz()
     {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            
-        
             
             let imagePicker = UIImagePickerController()
             imagePicker.allowsEditing = true
