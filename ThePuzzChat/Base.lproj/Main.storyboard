@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eDK-k8-LKq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,10 +9,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Landing PageVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ThePuzzChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LandingPageVC" customModule="ThePuzzChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -67,7 +67,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="CSf-wE-dME" kind="show" id="KhA-zs-cwW"/>
+                                    <segue destination="CSf-wE-dME" kind="show" identifier="CreateAccountSegue" id="KhA-zs-cwW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="546" y="-327"/>
         </scene>
-        <!--View Controller-->
+        <!--Create AccountVC-->
         <scene sceneID="V2y-bh-ksf">
             <objects>
-                <viewController id="CSf-wE-dME" sceneMemberID="viewController">
+                <viewController id="CSf-wE-dME" customClass="CreateAccountVC" customModule="ThePuzzChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Shb-I0-jN0"/>
                         <viewControllerLayoutGuide type="bottom" id="jrt-wd-kOz"/>
@@ -263,13 +263,15 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="tpg-fB-oVE" kind="show" id="EEp-cr-mVk"/>
+                                    <action selector="CreateAccount:" destination="CSf-wE-dME" eventType="touchUpInside" id="kWo-A8-n8w"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.031372549019607843" green="0.14117647058823529" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="8zC-Vp-isg" firstAttribute="top" secondItem="Shb-I0-jN0" secondAttribute="bottom" constant="77" id="37z-eC-dQZ"/>
+                            <constraint firstItem="8zC-Vp-isg" firstAttribute="top" secondItem="Shb-I0-jN0" secondAttribute="bottom" constant="77" id="37z-eC-dQZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="121"/>
+                            </constraint>
                             <constraint firstItem="8zC-Vp-isg" firstAttribute="centerX" secondItem="Kw1-3m-suV" secondAttribute="centerX" id="4CF-t1-1bH"/>
                             <constraint firstItem="dIY-qj-dGP" firstAttribute="leading" secondItem="gY8-hg-Ho4" secondAttribute="trailing" constant="-221" id="4b5-gn-gv2"/>
                             <constraint firstItem="dIY-qj-dGP" firstAttribute="top" secondItem="gY8-hg-Ho4" secondAttribute="bottom" constant="8" id="644-hZ-Y9X"/>
@@ -339,6 +341,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="EmailTextBox" destination="wUW-8B-RHu" id="QEY-Uv-pTu"/>
+                        <outlet property="PasswordTextBox" destination="gY8-hg-Ho4" id="utq-SZ-AOy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vq1-0N-fYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -881,10 +887,10 @@
                                                     <exclude reference="GEI-ha-u6n"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="Fbd-CW-Cpr"/>
-                                                    <exclude reference="x3d-2n-9jR"/>
                                                     <exclude reference="2Jd-QM-9rQ"/>
                                                     <exclude reference="rbI-Va-uCN"/>
+                                                    <exclude reference="Fbd-CW-Cpr"/>
+                                                    <exclude reference="x3d-2n-9jR"/>
                                                     <exclude reference="46f-nC-cHb"/>
                                                     <exclude reference="Bas-GP-645"/>
                                                     <exclude reference="QSK-LX-Qcr"/>
@@ -897,10 +903,10 @@
                                                     <include reference="GEI-ha-u6n"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="Fbd-CW-Cpr"/>
-                                                    <include reference="x3d-2n-9jR"/>
                                                     <include reference="2Jd-QM-9rQ"/>
                                                     <include reference="rbI-Va-uCN"/>
+                                                    <include reference="Fbd-CW-Cpr"/>
+                                                    <include reference="x3d-2n-9jR"/>
                                                     <include reference="46f-nC-cHb"/>
                                                     <include reference="Bas-GP-645"/>
                                                     <include reference="QSK-LX-Qcr"/>
@@ -974,6 +980,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wrl-tS-5Qc" id="uxX-bq-IJt">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Daniel" translatesAutoresizingMaskIntoConstraints="NO" id="OQG-SJ-bTp">
@@ -1000,6 +1007,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="66" y="38" width="109" height="16"/>
+                                                    </variation>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnm-6e-Ii7">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1012,7 +1022,8 @@
                                                             <exclude reference="0HL-Ry-WgP"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="183" y="14" width="49" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="0HL-Ry-WgP"/>
                                                         </mask>
@@ -1023,6 +1034,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="66" y="18" width="109" height="21"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -1048,17 +1062,17 @@
                                                     <exclude reference="eK7-vr-bST"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="iwL-cw-b7M"/>
-                                                    <exclude reference="xyE-46-kiA"/>
-                                                    <exclude reference="691-4L-DT0"/>
-                                                    <exclude reference="6hg-dX-5S5"/>
-                                                    <exclude reference="EJV-lU-pGj"/>
-                                                    <exclude reference="MlT-sm-ezL"/>
-                                                    <exclude reference="ddq-MB-w0b"/>
                                                     <exclude reference="3l3-EG-YoD"/>
                                                     <exclude reference="a4x-mt-yY3"/>
                                                     <exclude reference="aET-1F-w8i"/>
                                                     <exclude reference="iLL-vQ-iiY"/>
+                                                    <exclude reference="EJV-lU-pGj"/>
+                                                    <exclude reference="MlT-sm-ezL"/>
+                                                    <exclude reference="ddq-MB-w0b"/>
+                                                    <exclude reference="691-4L-DT0"/>
+                                                    <exclude reference="6hg-dX-5S5"/>
+                                                    <exclude reference="iwL-cw-b7M"/>
+                                                    <exclude reference="xyE-46-kiA"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1069,17 +1083,17 @@
                                                     <include reference="eK7-vr-bST"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="iwL-cw-b7M"/>
-                                                    <include reference="xyE-46-kiA"/>
-                                                    <include reference="691-4L-DT0"/>
-                                                    <include reference="6hg-dX-5S5"/>
-                                                    <include reference="EJV-lU-pGj"/>
-                                                    <include reference="MlT-sm-ezL"/>
-                                                    <exclude reference="ddq-MB-w0b"/>
                                                     <include reference="3l3-EG-YoD"/>
                                                     <include reference="a4x-mt-yY3"/>
                                                     <include reference="aET-1F-w8i"/>
                                                     <include reference="iLL-vQ-iiY"/>
+                                                    <include reference="EJV-lU-pGj"/>
+                                                    <include reference="MlT-sm-ezL"/>
+                                                    <exclude reference="ddq-MB-w0b"/>
+                                                    <include reference="691-4L-DT0"/>
+                                                    <include reference="6hg-dX-5S5"/>
+                                                    <include reference="iwL-cw-b7M"/>
+                                                    <include reference="xyE-46-kiA"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1382,24 +1396,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7q-ai-SRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5617.5" y="-706.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="62M-bx-9vX">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vVP-u7-ht0" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q7K-wd-6ZU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Jrn-Ul-E3t"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uoC-eq-bcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-417" y="-315"/>
         </scene>
     </scenes>
     <resources>
