@@ -2,7 +2,7 @@
 //  User.swift
 //  ThePuzzChat
 //
-//  Created by Danielle Rosaia on 7/15/16.
+//  Created by Daniel Leclair on 7/15/16.
 //  Copyright © 2016 Daniel Leclair. All rights reserved.
 //
 
@@ -19,4 +19,6 @@ class User: NSObject
     
     var email: String?
     var userName: String?
+    var userID: String?
+    var friendsList: [String : String] = [:]
 }
