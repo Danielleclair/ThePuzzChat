@@ -20,5 +20,6 @@ class User: NSObject
     var email: String?
     var userName: String?
     var userID: String?
-    var friendsList: [String : String] = [:]
+    var friendsList: [Friend] = []
+    var inbox: [Message] = []
 }

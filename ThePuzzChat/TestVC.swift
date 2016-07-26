@@ -14,6 +14,6 @@ class TestVC: UIViewController
     
     @IBAction func SendMessage(sender: AnyObject) {
         
-        FirebaseManager.sharedInstance.SendPuzzchat("123456789")
+        FirebaseManager.sharedInstance.AddFriendToFriendsList("danielsleclair@gmail.com")
     }
 }

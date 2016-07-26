@@ -11,6 +11,29 @@ import UIKit
 
 class LandingPageVC: UIViewController
 {
-
+    override func viewDidLoad() {
+        
+        //Hide buttons
+        //Show activity indicator
+        
+        //Check authorization status
+        FirebaseManager.sharedInstance.GetUserAuthState { (authorized, usernameSelected) in
+         
+            if (authorized && usernameSelected)
+            {
+                //segue to home screen
+            }
+            else if (authorized && !usernameSelected)
+            {
+                //segue to username selection
+            }
+            else //Not authorized, show sign in and create account buttons
+            {
+                //Show buttons
+                //hide activity indicator
+            }
+        }
+        
+    }
     
 }
