@@ -27,6 +27,8 @@
 		33A62E8F1D34D891005579AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33A62E8E1D34D891005579AE /* GoogleService-Info.plist */; };
 		33A62E911D34DDC4005579AE /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A62E901D34DDC4005579AE /* FirebaseManager.swift */; };
 		33ADABAD1D30DBDB00202695 /* HomeScreenScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ADABAC1D30DBDB00202695 /* HomeScreenScrollVC.swift */; };
+		33DC07EB1D4838AB00CEF787 /* ShopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DC07EA1D4838AB00CEF787 /* ShopVC.swift */; };
+		33DC07ED1D48B71700CEF787 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DC07EC1D48B71700CEF787 /* AccountVC.swift */; };
 		33EC1FAF1D38C188001823EA /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC1FAE1D38C188001823EA /* CreateAccountVC.swift */; };
 		33EC1FB11D38C464001823EA /* LandingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC1FB01D38C464001823EA /* LandingPageVC.swift */; };
 		33EC1FB31D38CA45001823EA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC1FB21D38CA45001823EA /* User.swift */; };
@@ -80,6 +82,8 @@
 		33A62E8E1D34D891005579AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33A62E901D34DDC4005579AE /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		33ADABAC1D30DBDB00202695 /* HomeScreenScrollVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenScrollVC.swift; sourceTree = "<group>"; };
+		33DC07EA1D4838AB00CEF787 /* ShopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopVC.swift; sourceTree = "<group>"; };
+		33DC07EC1D48B71700CEF787 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		33EC1FAE1D38C188001823EA /* CreateAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		33EC1FB01D38C464001823EA /* LandingPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageVC.swift; sourceTree = "<group>"; };
 		33EC1FB21D38CA45001823EA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -152,16 +156,6 @@
 			children = (
 				33EC1FBE1D3DA53B001823EA /* Controllers */,
 				33EC1FBD1D3DA4F3001823EA /* ViewControllers */,
-				33EC1FB81D3B1253001823EA /* SignInVC.swift */,
-				33A62E8C1D336B0F005579AE /* FriendCellVC.swift */,
-				33EC1FB41D38DE5F001823EA /* PuzzatarCreationVC.swift */,
-				33ADABAC1D30DBDB00202695 /* HomeScreenScrollVC.swift */,
-				33EC1FB01D38C464001823EA /* LandingPageVC.swift */,
-				33A62E861D333F19005579AE /* MessageCellVC.swift */,
-				33A62E841D333747005579AE /* PuzzVC.swift */,
-				33EC1FB61D38E85F001823EA /* TestVC.swift */,
-				330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */,
-				33EC1FAE1D38C188001823EA /* CreateAccountVC.swift */,
 				33EC1FBC1D3DA4B7001823EA /* Models */,
 				33A62E8E1D34D891005579AE /* GoogleService-Info.plist */,
 				330A7A911D28F296007FEABB /* Main.storyboard */,
@@ -206,7 +200,19 @@
 		33EC1FBD1D3DA4F3001823EA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				33DC07EC1D48B71700CEF787 /* AccountVC.swift */,
+				33EC1FB81D3B1253001823EA /* SignInVC.swift */,
+				33A62E8C1D336B0F005579AE /* FriendCellVC.swift */,
+				33EC1FB41D38DE5F001823EA /* PuzzatarCreationVC.swift */,
+				33ADABAC1D30DBDB00202695 /* HomeScreenScrollVC.swift */,
+				33EC1FB01D38C464001823EA /* LandingPageVC.swift */,
+				33A62E861D333F19005579AE /* MessageCellVC.swift */,
+				33A62E841D333747005579AE /* PuzzVC.swift */,
+				33EC1FB61D38E85F001823EA /* TestVC.swift */,
+				330A7AC01D28F52B007FEABB /* SolvePuzzleVC.swift */,
+				33EC1FAE1D38C188001823EA /* CreateAccountVC.swift */,
 				33A62E8A1D334446005579AE /* FriendsListVC.swift */,
+				33DC07EA1D4838AB00CEF787 /* ShopVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -517,12 +523,14 @@
 				33A62E8B1D334446005579AE /* FriendsListVC.swift in Sources */,
 				330A7AC11D28F52B007FEABB /* SolvePuzzleVC.swift in Sources */,
 				33A62E851D333747005579AE /* PuzzVC.swift in Sources */,
+				33DC07EB1D4838AB00CEF787 /* ShopVC.swift in Sources */,
 				33ADABAD1D30DBDB00202695 /* HomeScreenScrollVC.swift in Sources */,
 				33EC1FB11D38C464001823EA /* LandingPageVC.swift in Sources */,
 				330A7AC71D2A14F8007FEABB /* Tile.swift in Sources */,
 				33454F3D1D3F7E9D001DC932 /* Friend.swift in Sources */,
 				330A7AC31D28F625007FEABB /* Puzzle.swift in Sources */,
 				33EC1FAF1D38C188001823EA /* CreateAccountVC.swift in Sources */,
+				33DC07ED1D48B71700CEF787 /* AccountVC.swift in Sources */,
 				330A7A8E1D28F296007FEABB /* AppDelegate.swift in Sources */,
 				33EC1FBB1D3DA4A8001823EA /* Message.swift in Sources */,
 				33EC1FB71D38E85F001823EA /* TestVC.swift in Sources */,

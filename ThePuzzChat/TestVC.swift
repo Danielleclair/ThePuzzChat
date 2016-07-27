@@ -12,8 +12,4 @@ import UIKit
 class TestVC: UIViewController
 {
     
-    @IBAction func SendMessage(sender: AnyObject) {
-        
-        FirebaseManager.sharedInstance.AddFriendToFriendsList("danielsleclair@gmail.com")
-    }
 }

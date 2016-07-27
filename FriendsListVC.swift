@@ -34,5 +34,5 @@ class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 25
     }
     
-    
+     
 }

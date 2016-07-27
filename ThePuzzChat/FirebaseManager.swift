@@ -82,6 +82,8 @@ class FirebaseManager: NSObject
             else
             {
                 callback(false, false) //Not signed in
+                
+                //If user signed out, pop the navigation stack
             }
         })
     }
@@ -177,7 +179,7 @@ class FirebaseManager: NSObject
         
         if (user.userID != nil)
         {
-            usersReference.child(User.sharedInstance.userID!).setValue(["username" : username])
+            usersReference.child(User.sharedInstance.userID!).setValue(["username" : username, "uid" : user.userID!])
             databaseReference.child("inbox").child(User.sharedInstance.userID!)
             databaseReference.child("friends").child(User.sharedInstance.userID!)
             
@@ -258,7 +260,7 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     private func getFriendsList(userID: String)
     {
-        user.inbox.removeAll() //Update inbox
+        user.friendsList.removeAll() //Update inbox
         
         self.databaseReference.child("friends").child(userID).observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
@@ -278,24 +280,34 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     //Add friend to friends list
     //---------------------------------------------------------------------------------------------
-    func AddFriendToFriendsList(email: String)
+    func AddFriendToFriendsList(username: String, callback: (String)->())
     {
-        print(email)
-        
-        usersReference.queryEqualToValue(email, childKey: "email")
-        
+        usersReference.queryOrderedByChild("username").queryEqualToValue(username).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             
-            /*
-            .observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
-            
-            print(snapshot.value)
-            
-            if let data = snapshot.value as? [String: AnyObject]
-            {
-                print("running")
+            if ( snapshot.value is NSNull ) {
+                
+                callback("User does not exist")
+                
+            } else {
+                
+                
+                if let data = snapshot.value as? [String : AnyObject]
+                {
+                    for item in data
+                    {
+                        self.databaseReference.child("friends").child(item.1.objectForKey("uid")! as! String).childByAutoId().setValue(["friendID" : self.user.userID!, "requestAccepted" : 0])
+                        
+                        callback("Request sent")
+                    }
+                }
             }
+            
+            
+            }, withCancelBlock: { (error) in
+                
+                //Return the error is the callback
+                callback("An error occurred")
         })
- */
     }
     
     
@@ -306,5 +318,17 @@ class FirebaseManager: NSObject
     func AddFriendWithEmail(email: String)
     {
         //authenticationReference.user
+    }
+    
+    //---------------------------------------------------------------------------------------------
+    //Sign out of user's account
+    //---------------------------------------------------------------------------------------------
+    func SignOut()
+    {
+        do {
+            try authenticationReference?.signOut()
+        } catch {
+        }
+        
     }
 }

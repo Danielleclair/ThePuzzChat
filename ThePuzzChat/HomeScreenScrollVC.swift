@@ -73,7 +73,7 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         let viewHeight = self.view.frame.height
         let viewWidth = self.view.frame.width
