@@ -12,9 +12,11 @@ class Friend: NSObject
 {
     let userID: String
     let userName: String
+    let requestAccepted: Bool
     
-    init(_userID: String, _userName: String) {
+    init(_userID: String, _userName: String, _requestAccepted: Bool) {
         userID = _userID
         userName = _userName
+        requestAccepted = _requestAccepted
     }
 }

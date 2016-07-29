@@ -72,12 +72,12 @@ class FirebaseManager: NSObject
                 })
                 
                 //Observe for changes to inbox and friends list
-                //self.getInboxMessage(account.uid)
-                //self.getFriendsList(account.uid)
+                self.getInboxMessage(account.uid)
+                self.getFriendsList(account.uid)
                 
                 //Test
-                self.getInboxMessage("123456789")
-                self.getFriendsList("123456789")
+                //self.getInboxMessage("123456789")
+                //self.getFriendsList("123456789")
             }
             else
             {
@@ -260,19 +260,42 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     private func getFriendsList(userID: String)
     {
-        user.friendsList.removeAll() //Update inbox
-        
-        self.databaseReference.child("friends").child(userID).observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        self.databaseReference.child("friends").child(userID).observeEventType(.Value, withBlock: { (snapshot) in
             
-            if let data = snapshot.value as? [String : AnyObject]
+            if ( snapshot.value is NSNull )
             {
-                let friendID = data["friendID"] as! String
-                let friendName = data["friendName"] as! String
                 
-                self.user.friendsList += [Friend(_userID: friendID, _userName: friendName)]
+                print("Does not exist")
                 
-                //Post notification of updated friendslist
-                NSNotificationCenter.defaultCenter().postNotificationName("FriendsListUpdated", object: nil)
+            }
+            else
+            {
+                self.user.friendsList.removeAll() //Update inbox
+                
+                if var data = snapshot.value as? [String : AnyObject]
+                {
+                    data = (data.values.first as? [String : AnyObject])!
+                    
+                    let friendID = data["friendID"] as! String
+                    let friendName = data["friendName"] as! String
+                    let requestAcceptedInt = data["requestAccepted"] as! Int
+                    
+                    let requestAccepted: Bool
+                    if (requestAcceptedInt == 0)
+                    {
+                        requestAccepted = false
+                    }
+                    else
+                    {
+                        requestAccepted = true
+                    }
+                    
+                    self.user.friendsList += [Friend(_userID: friendID, _userName: friendName, _requestAccepted: requestAccepted)]
+                    
+                    //Post notification of updated friendslist
+                    NSNotificationCenter.defaultCenter().postNotificationName("FriendsListUpdated", object: nil)
+                }
+
             }
         })
     }
@@ -280,28 +303,32 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     //Add friend to friends list
     //---------------------------------------------------------------------------------------------
-    func AddFriendToFriendsList(username: String, callback: (String)->())
+    func SendFriendRequestToUser(username: String, callback: (String)->())
     {
-        usersReference.queryOrderedByChild("username").queryEqualToValue(username).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        usersReference.queryOrderedByChild("username").queryEqualToValue(username).observeSingleEventOfType(.ChildAdded, withBlock: { (snapshot) in
             
-            if ( snapshot.value is NSNull ) {
+            if ( snapshot.value is NSNull )
+            {
                 
                 callback("User does not exist")
                 
-            } else {
-                
-                
+            }
+            else
+            {
                 if let data = snapshot.value as? [String : AnyObject]
                 {
-                    for item in data
-                    {
-                        self.databaseReference.child("friends").child(item.1.objectForKey("uid")! as! String).childByAutoId().setValue(["friendID" : self.user.userID!, "requestAccepted" : 0])
-                        
-                        callback("Request sent")
-                    }
+                        //Check to make sure user isn't adding themself
+                        if (data["uid"] as? String != self.user.userID!)
+                        {
+                            print("Okay, adding user to friends")
+                            self.databaseReference.child("friends").child(data["uid"] as! String).child(self.user.userID!).setValue(["friendID" : self.user.userID!, "requestAccepted" : 0, "friendName" : self.user.userName!])
+                        }
+                        else
+                        {
+                            callback("Error - Cannot add self as friend")
+                        }
                 }
             }
-            
             
             }, withCancelBlock: { (error) in
                 
@@ -310,7 +337,21 @@ class FirebaseManager: NSObject
         })
     }
     
+    //---------------------------------------------------------------------------------------------
+    //Accept friend request
+    //---------------------------------------------------------------------------------------------
+    func AcceptFriendRequest(userID: String)
+    {
+        databaseReference.child("friends").child(user.userID!).child(userID).updateChildValues(["requestAccepted": 1])
+    }
     
+    //---------------------------------------------------------------------------------------------
+    //Decline friend request
+    //---------------------------------------------------------------------------------------------
+    func DeclineFriendRequest(userID: String)
+    {
+        databaseReference.child("friends").child(user.userID!).child(userID).removeValue()
+    }
     
     //---------------------------------------------------------------------------------------------
     //Add new friend

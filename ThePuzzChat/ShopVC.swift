@@ -15,7 +15,9 @@ class ShopVC: UIViewController, UIPopoverPresentationControllerDelegate
    
     @IBAction func Submit(sender: AnyObject) {
         
-        FirebaseManager.sharedInstance.AddFriendToFriendsList("Zalandrys") { (String) in
+        if (UsernameTextField.text != nil)
+        {
+            FirebaseManager.sharedInstance.SendFriendRequestToUser(UsernameTextField.text!) { (String) in }
         }
     }
 }

@@ -15,6 +15,10 @@ class SignInVC: UIViewController
     
     @IBOutlet weak var PasswordTextField: UITextField!
     
+    @IBAction func BackButton() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func SignIn(sender: AnyObject) {
         
         if (EmailTextField.text != nil)
