@@ -2,7 +2,7 @@
 //  ShopVC.swift
 //  ThePuzzChat
 //
-//  Created by Danielle Rosaia on 7/26/16.
+//  Created by Daniel Leclair on 7/26/16.
 //  Copyright © 2016 Daniel Leclair. All rights reserved.
 //
 

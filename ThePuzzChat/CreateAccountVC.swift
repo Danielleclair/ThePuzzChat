@@ -11,10 +11,15 @@ import UIKit
 
 class CreateAccountVC: UIViewController, UITextFieldDelegate
 {
+    @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var EmailTextBox: UITextField!
     @IBOutlet weak var PasswordTextBox: UITextField!
     
     override func viewDidLoad() {
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.hideKeyboard))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+        
         EmailTextBox.delegate = self
         PasswordTextBox.delegate = self
     }
@@ -53,8 +58,21 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        
+        ScrollView.setContentOffset(CGPoint(x: 0, y: 100.0), animated: true)
         return true
+        
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        hideKeyboard()
+        return true
+    }
+    
+    func hideKeyboard()
+    {
+        self.view.endEditing(true)
+        ScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 }

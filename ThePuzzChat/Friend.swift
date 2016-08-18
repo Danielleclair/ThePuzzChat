@@ -2,7 +2,7 @@
 //  Friend.swift
 //  ThePuzzChat
 //
-//  Created by Danielle Rosaia on 7/20/16.
+//  Created by Danielle Leclair on 7/20/16.
 //  Copyright © 2016 Daniel Leclair. All rights reserved.
 //
 
