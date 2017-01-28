@@ -19,7 +19,7 @@ class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidLoad() {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData), name: "FriendsListUpdated", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "FriendsListUpdated"), object: nil)
         
         friendsList.delegate = self
         friendsList.dataSource = self
@@ -27,13 +27,13 @@ class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         user = User.sharedInstance
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         print(user?.friendsList.count)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("friendCell") as! FriendCellVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell") as! FriendCellVC
         
         if (user != nil)
         {
@@ -42,13 +42,13 @@ class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             if (cell.friend!.requestAccepted)
             {
-                cell.AcceptButton.hidden = true
-                cell.DeclineButton.hidden = true
+                cell.AcceptButton.isHidden = true
+                cell.DeclineButton.isHidden = true
             }
             else
             {
-                cell.AcceptButton.hidden = false
-                cell.DeclineButton.hidden = false
+                cell.AcceptButton.isHidden = false
+                cell.DeclineButton.isHidden = false
             }
         }
         
@@ -57,11 +57,11 @@ class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(User.sharedInstance.friendsList.count)
         return User.sharedInstance.friendsList.count
     }

@@ -21,14 +21,14 @@ class SolvePuzzleVC: UIViewController
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         DisplayPuzzle()
     }
     
     @IBOutlet weak var puzzleView: UIView!
     
     
-    @IBAction func shuffle(sender: AnyObject) {
+    @IBAction func shuffle(_ sender: AnyObject) {
         puzzle!.Shuffle()
         DisplayPuzzle()
     }
@@ -59,9 +59,9 @@ class SolvePuzzleVC: UIViewController
         }
     }
       
-    private func removeSwipeGestureRecognizerFromImage(imgView: UIImageView)
+    private func removeSwipeGestureRecognizerFromImage(_ imgView: UIImageView)
     {
-        let directions: [UISwipeGestureRecognizerDirection] = [.Up, .Down, .Right, .Left]
+        let directions: [UISwipeGestureRecognizerDirection] = [.up, .down, .right, .left]
         for direction in directions
         {
             let swipeRecognizer = UISwipeGestureRecognizer()
@@ -74,28 +74,28 @@ class SolvePuzzleVC: UIViewController
     //------------------------------------------------------------------------------------------
     //Called when a tile is swiped
     //------------------------------------------------------------------------------------------
-    func tileWasSwiped(swipeRecognizer: UISwipeGestureRecognizer)
+    func tileWasSwiped(_ swipeRecognizer: UISwipeGestureRecognizer)
     {
         if (swipeRecognizer.view != nil && puzzle != nil)
         {
-            if (swipeRecognizer.direction == .Up)
+            if (swipeRecognizer.direction == .up)
             {
-                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Up)
+                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .up)
                 DisplayPuzzle()
             }
-            if (swipeRecognizer.direction == .Down)
+            if (swipeRecognizer.direction == .down)
             {
-                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Down)
+                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .down)
                 DisplayPuzzle()
             }
-            if (swipeRecognizer.direction == .Left)
+            if (swipeRecognizer.direction == .left)
             {
-                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Left)
+                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .left)
                 DisplayPuzzle()
             }
-            if (swipeRecognizer.direction == .Right)
+            if (swipeRecognizer.direction == .right)
             {
-                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .Right)
+                puzzle!.SlideTileWithTag(swipeRecognizer.view!.tag, direction: .right)
                 DisplayPuzzle()
             }
         }

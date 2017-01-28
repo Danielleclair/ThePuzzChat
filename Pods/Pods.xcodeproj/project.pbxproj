@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C0DE98AFBD60D3D2DFBCDC36F25B6DF /* Pods-ThePuzzChat-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4440A7135D1C0AA472A845D1EE5D3 /* Pods-ThePuzzChat-dummy.m */; };
-		4943C0AC32A3F059BEDFA466E24931EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		4E94CD7100877CF756267694AA6BB649 /* Pods-ThePuzzChatUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62793173B1BC02ED6B97A7E9BE7C300A /* Pods-ThePuzzChatUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E7E1D47FB0DD031BFADC8DC530C13B9 /* Pods-ThePuzzChatUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6658774B26DDDACD3102B5DA206264 /* Pods-ThePuzzChatUITests-dummy.m */; };
-		747E95F92DEFC90D89623BB55D7178CD /* Pods-ThePuzzChatTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1A9C5A312F9C401604F5E7DA5FE2E /* Pods-ThePuzzChatTests-dummy.m */; };
-		9B44E944CEF69EE8ECF33C2842D77379 /* Pods-ThePuzzChat-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5021107FBBD074D2A048027C5277D038 /* Pods-ThePuzzChat-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6C8D4A1FE9750B3A6BE1D8404A8DABF /* Pods-ThePuzzChatTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B81CD6BFDC4EEF327A12652B0702F259 /* Pods-ThePuzzChatTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C132D58E2659BDCF81FA2C16B261A0EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		C5AA88C56B9C8C506BB235BA04D851BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		37E4EA34328DE726AF125178B6E5533C /* Pods-ThePuzzChatTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1A9C5A312F9C401604F5E7DA5FE2E /* Pods-ThePuzzChatTests-dummy.m */; };
+		49BCC4C0F109A481DF2D54B145320DD0 /* Pods-ThePuzzChat-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4440A7135D1C0AA472A845D1EE5D3 /* Pods-ThePuzzChat-dummy.m */; };
+		4AD62630B5A65D88B4A4039966A846F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		5CEE28BBF26E5A89ACCBDDA3607A59D7 /* Pods-ThePuzzChatUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62793173B1BC02ED6B97A7E9BE7C300A /* Pods-ThePuzzChatUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		795476B90462BD88A66A0E8AB4161462 /* Pods-ThePuzzChat-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5021107FBBD074D2A048027C5277D038 /* Pods-ThePuzzChat-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		819728C23B0F7EEC1DA421EC97F35811 /* Pods-ThePuzzChatTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B81CD6BFDC4EEF327A12652B0702F259 /* Pods-ThePuzzChatTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2582E93F55DDCEF0BA723E40768737D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		CD6A796526DF8FF1A6B66DC2E0BC3E01 /* Pods-ThePuzzChatUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6658774B26DDDACD3102B5DA206264 /* Pods-ThePuzzChatUITests-dummy.m */; };
+		D1093E397EBFAD2B6926F6483130F966 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01B4A8B9737A295A889AE7563101F1A9 /* Pods_ThePuzzChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePuzzChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01B4A8B9737A295A889AE7563101F1A9 /* Pods_ThePuzzChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ThePuzzChatTests.framework; path = "Pods-ThePuzzChatTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0442B57F94988A52B25F29049693BFF3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08BC45BE728484ED8A9C3A5E4DEF683F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
 		0A36C2D6ACB8F3752C5FD72F1D0E1AAA /* Pods-ThePuzzChatUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ThePuzzChatUITests-frameworks.sh"; sourceTree = "<group>"; };
@@ -39,16 +39,16 @@
 		62793173B1BC02ED6B97A7E9BE7C300A /* Pods-ThePuzzChatUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ThePuzzChatUITests-umbrella.h"; sourceTree = "<group>"; };
 		64D7163040F8EDAC68CCD0367B4578FF /* Pods-ThePuzzChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ThePuzzChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D2F48623588EB4F548849F730091DC9 /* Pods-ThePuzzChat-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ThePuzzChat-frameworks.sh"; sourceTree = "<group>"; };
-		6F67C33C34A707C14952517724EE4A0E /* Pods-ThePuzzChat.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ThePuzzChat.modulemap"; sourceTree = "<group>"; };
+		6F67C33C34A707C14952517724EE4A0E /* Pods-ThePuzzChat.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ThePuzzChat.modulemap"; sourceTree = "<group>"; };
 		71A4440A7135D1C0AA472A845D1EE5D3 /* Pods-ThePuzzChat-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ThePuzzChat-dummy.m"; sourceTree = "<group>"; };
 		7E7BEDDA62ED11D446753E59BA5E2D01 /* Pods-ThePuzzChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ThePuzzChat.debug.xcconfig"; sourceTree = "<group>"; };
 		804746DC014E13D14CE722F84E652182 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
 		8D901571387B15EF6AB04D2A1B240037 /* Pods-ThePuzzChatUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ThePuzzChatUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		8E6658774B26DDDACD3102B5DA206264 /* Pods-ThePuzzChatUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ThePuzzChatUITests-dummy.m"; sourceTree = "<group>"; };
-		90064072399256FEA4076B00B9589938 /* Pods-ThePuzzChatTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ThePuzzChatTests.modulemap"; sourceTree = "<group>"; };
-		90757B561E8370BA51A12F62704C08A6 /* Pods_ThePuzzChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePuzzChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90064072399256FEA4076B00B9589938 /* Pods-ThePuzzChatTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ThePuzzChatTests.modulemap"; sourceTree = "<group>"; };
+		90757B561E8370BA51A12F62704C08A6 /* Pods_ThePuzzChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ThePuzzChat.framework; path = "Pods-ThePuzzChat.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		930906B531D0334C455D957100D37F1D /* Pods-ThePuzzChatTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ThePuzzChatTests-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		984DC8A39584D69E5C7B6DCDBAE4D320 /* Pods-ThePuzzChatUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ThePuzzChatUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D6DB686E9EFB4B93CA1D9867A061A81 /* Pods-ThePuzzChatTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ThePuzzChatTests-resources.sh"; sourceTree = "<group>"; };
 		A476BF7482EA61B0D5177E14B0FBCE0E /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -56,11 +56,11 @@
 		B2E1A9C5A312F9C401604F5E7DA5FE2E /* Pods-ThePuzzChatTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ThePuzzChatTests-dummy.m"; sourceTree = "<group>"; };
 		B81CD6BFDC4EEF327A12652B0702F259 /* Pods-ThePuzzChatTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ThePuzzChatTests-umbrella.h"; sourceTree = "<group>"; };
 		BE88FB6759ADA8CE4FF759563B2168F5 /* Pods-ThePuzzChatUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ThePuzzChatUITests-resources.sh"; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DCA938DCC75AB045E09AC5FEB3F66401 /* Pods-ThePuzzChatUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ThePuzzChatUITests.modulemap"; sourceTree = "<group>"; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DCA938DCC75AB045E09AC5FEB3F66401 /* Pods-ThePuzzChatUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ThePuzzChatUITests.modulemap"; sourceTree = "<group>"; };
 		DE0ED84F249C56361D4FCE60CEF8161A /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
 		E24EFB52FEB5953514361C624F3E14F2 /* Pods-ThePuzzChat-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ThePuzzChat-acknowledgements.plist"; sourceTree = "<group>"; };
-		ECEF4D091253C870853964E9C28FF305 /* Pods_ThePuzzChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePuzzChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECEF4D091253C870853964E9C28FF305 /* Pods_ThePuzzChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ThePuzzChatUITests.framework; path = "Pods-ThePuzzChatUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEC92271A3BA774BD0A867169642C15 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		F477C82F3EE5490230AAB9F017E7C022 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5B0C0C01CD362C56C27962BA57A4A0F /* Pods-ThePuzzChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ThePuzzChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,27 +68,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		13D0AEFF2666DBACBB150804FE599081 /* Frameworks */ = {
+		25AF440E3692AB865A548666153304F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4943C0AC32A3F059BEDFA466E24931EB /* Foundation.framework in Frameworks */,
+				C2582E93F55DDCEF0BA723E40768737D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69E9D502C3DF19277C3D3EEF1E6B5CE3 /* Frameworks */ = {
+		C4395C533A4C32698788C287E0242351 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C132D58E2659BDCF81FA2C16B261A0EF /* Foundation.framework in Frameworks */,
+				D1093E397EBFAD2B6926F6483130F966 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6BB8C4B038924081703EEEB9FE69CA8 /* Frameworks */ = {
+		F8F08A640C10E667DE84782BF050B0B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5AA88C56B9C8C506BB235BA04D851BA /* Foundation.framework in Frameworks */,
+				4AD62630B5A65D88B4A4039966A846F9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,14 +101,6 @@
 				08BC45BE728484ED8A9C3A5E4DEF683F /* GoogleInterchangeUtilities.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		4025CB8954820958BC658A286880617D /* Frameworks */ = {
@@ -142,6 +134,7 @@
 			children = (
 				87141F7DDDC279CC7BE5823C288995B1 /* Frameworks */,
 			);
+			name = GoogleUtilities;
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
@@ -168,6 +161,7 @@
 			children = (
 				55C2F4F97A1ACBFD3DDE92D9E27F3C52 /* Frameworks */,
 			);
+			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -187,6 +181,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		7579823DD29B2678748108B7188B8A0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +203,7 @@
 				804746DC014E13D14CE722F84E652182 /* FIRInstanceID.h */,
 				7579823DD29B2678748108B7188B8A0A /* Frameworks */,
 			);
+			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -254,6 +257,7 @@
 			children = (
 				4025CB8954820958BC658A286880617D /* Frameworks */,
 			);
+			name = FirebaseStorage;
 			path = FirebaseStorage;
 			sourceTree = "<group>";
 		};
@@ -262,6 +266,7 @@
 			children = (
 				1FD76B11933228E2434375AD39F5F1B8 /* Frameworks */,
 			);
+			name = GoogleInterchangeUtilities;
 			path = GoogleInterchangeUtilities;
 			sourceTree = "<group>";
 		};
@@ -270,6 +275,7 @@
 			children = (
 				8739F3F1704841AEC94416A46153DE18 /* Frameworks */,
 			);
+			name = GoogleNetworkingUtilities;
 			path = GoogleNetworkingUtilities;
 			sourceTree = "<group>";
 		};
@@ -286,6 +292,7 @@
 			children = (
 				5A6995B4AD4E70EB7FA466552C95ED3A /* Frameworks */,
 			);
+			name = FirebaseAuth;
 			path = FirebaseAuth;
 			sourceTree = "<group>";
 		};
@@ -294,13 +301,14 @@
 			children = (
 				E3339BB0E8199E2CA7F63548E2936510 /* Frameworks */,
 			);
+			name = GoogleSymbolUtilities;
 			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -327,6 +335,7 @@
 			children = (
 				A36386A92DF30353C7ED642A63197EE3 /* Frameworks */,
 			);
+			name = FirebaseDatabase;
 			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
@@ -335,6 +344,7 @@
 			children = (
 				482B2F4B00A33E42BD06F4C2E345532B /* Analytics */,
 			);
+			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -377,57 +387,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		22F30D61E86FE7A89B2D8E44FCF6B508 /* Headers */ = {
+		8D32A6860A6CC10B25F12265F5F961BA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B44E944CEF69EE8ECF33C2842D77379 /* Pods-ThePuzzChat-umbrella.h in Headers */,
+				5CEE28BBF26E5A89ACCBDDA3607A59D7 /* Pods-ThePuzzChatUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28FD404498B43A690F9F6DE17D2D956F /* Headers */ = {
+		B7FAF35AEDFB58F131B51866497BC159 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E94CD7100877CF756267694AA6BB649 /* Pods-ThePuzzChatUITests-umbrella.h in Headers */,
+				795476B90462BD88A66A0E8AB4161462 /* Pods-ThePuzzChat-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FD1857C63E1A513FA974F947B88E368 /* Headers */ = {
+		E022741A9E3408225DC98E4F7429912B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C8D4A1FE9750B3A6BE1D8404A8DABF /* Pods-ThePuzzChatTests-umbrella.h in Headers */,
+				819728C23B0F7EEC1DA421EC97F35811 /* Pods-ThePuzzChatTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		379060E67DF4C9CD9DFCF11C3A27EC22 /* Pods-ThePuzzChat */ = {
+		4CBF47B112DF75EE1898B9AC02AEA1A3 /* Pods-ThePuzzChatUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BE8D463D04754B1805C1793122656B3C /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChat" */;
+			buildConfigurationList = C02CA385A2AD2C70CCE9293C0670A79E /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatUITests" */;
 			buildPhases = (
-				50FC3226B6FAC7B8EF36287CB960BD6E /* Sources */,
-				B6BB8C4B038924081703EEEB9FE69CA8 /* Frameworks */,
-				22F30D61E86FE7A89B2D8E44FCF6B508 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-ThePuzzChat";
-			productName = "Pods-ThePuzzChat";
-			productReference = 90757B561E8370BA51A12F62704C08A6 /* Pods_ThePuzzChat.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		784BDE53C9B707B4D3773E2D900E64D1 /* Pods-ThePuzzChatUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9FA4F27A49EC2810E7F6ECDB77CED40D /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatUITests" */;
-			buildPhases = (
-				DD650AC06D1688C12D9DA970C5E7776A /* Sources */,
-				13D0AEFF2666DBACBB150804FE599081 /* Frameworks */,
-				28FD404498B43A690F9F6DE17D2D956F /* Headers */,
+				0D6C72B63B28C2977B9238F91DB70E02 /* Sources */,
+				F8F08A640C10E667DE84782BF050B0B9 /* Frameworks */,
+				8D32A6860A6CC10B25F12265F5F961BA /* Headers */,
 			);
 			buildRules = (
 			);
@@ -438,13 +431,30 @@
 			productReference = ECEF4D091253C870853964E9C28FF305 /* Pods_ThePuzzChatUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D464B4F7DFB47EC8213986D124D3812A /* Pods-ThePuzzChatTests */ = {
+		6422ACA3A0ABCA6831E389623113EAE5 /* Pods-ThePuzzChat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9F6AA492567004D3964E541011B22B7 /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatTests" */;
+			buildConfigurationList = DA52D34F6C9B4FB47493EC2808DA7DD1 /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChat" */;
 			buildPhases = (
-				092216195C8CD27587F63CCEA0E0ABEB /* Sources */,
-				69E9D502C3DF19277C3D3EEF1E6B5CE3 /* Frameworks */,
-				7FD1857C63E1A513FA974F947B88E368 /* Headers */,
+				524D138AA8B1B5292BC779DEA6839228 /* Sources */,
+				C4395C533A4C32698788C287E0242351 /* Frameworks */,
+				B7FAF35AEDFB58F131B51866497BC159 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ThePuzzChat";
+			productName = "Pods-ThePuzzChat";
+			productReference = 90757B561E8370BA51A12F62704C08A6 /* Pods_ThePuzzChat.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CD8C1ED166EF6340913FD524D41CE02E /* Pods-ThePuzzChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCAFB515A9EAD65E79B41089B0149207 /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatTests" */;
+			buildPhases = (
+				0C4B8F6D02F88DA28D458EADEB65CB08 /* Sources */,
+				25AF440E3692AB865A548666153304F2 /* Frameworks */,
+				E022741A9E3408225DC98E4F7429912B /* Headers */,
 			);
 			buildRules = (
 			);
@@ -476,108 +486,42 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				379060E67DF4C9CD9DFCF11C3A27EC22 /* Pods-ThePuzzChat */,
-				D464B4F7DFB47EC8213986D124D3812A /* Pods-ThePuzzChatTests */,
-				784BDE53C9B707B4D3773E2D900E64D1 /* Pods-ThePuzzChatUITests */,
+				6422ACA3A0ABCA6831E389623113EAE5 /* Pods-ThePuzzChat */,
+				CD8C1ED166EF6340913FD524D41CE02E /* Pods-ThePuzzChatTests */,
+				4CBF47B112DF75EE1898B9AC02AEA1A3 /* Pods-ThePuzzChatUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		092216195C8CD27587F63CCEA0E0ABEB /* Sources */ = {
+		0C4B8F6D02F88DA28D458EADEB65CB08 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				747E95F92DEFC90D89623BB55D7178CD /* Pods-ThePuzzChatTests-dummy.m in Sources */,
+				37E4EA34328DE726AF125178B6E5533C /* Pods-ThePuzzChatTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50FC3226B6FAC7B8EF36287CB960BD6E /* Sources */ = {
+		0D6C72B63B28C2977B9238F91DB70E02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C0DE98AFBD60D3D2DFBCDC36F25B6DF /* Pods-ThePuzzChat-dummy.m in Sources */,
+				CD6A796526DF8FF1A6B66DC2E0BC3E01 /* Pods-ThePuzzChatUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD650AC06D1688C12D9DA970C5E7776A /* Sources */ = {
+		524D138AA8B1B5292BC779DEA6839228 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E7E1D47FB0DD031BFADC8DC530C13B9 /* Pods-ThePuzzChatUITests-dummy.m in Sources */,
+				49BCC4C0F109A481DF2D54B145320DD0 /* Pods-ThePuzzChat-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1B17F79ECD3217327ADB57887FB762FE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E7BEDDA62ED11D446753E59BA5E2D01 /* Pods-ThePuzzChat.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChat/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChat/Pods-ThePuzzChat.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ThePuzzChat;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		32DE6CBADDBF65610E2307FF0790DC41 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5B0C0C01CD362C56C27962BA57A4A0F /* Pods-ThePuzzChatUITests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChatUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChatUITests/Pods-ThePuzzChatUITests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ThePuzzChatUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		3FA451D268613890FA8A5A03801E11D5 /* Release */ = {
+		13E96A645A77DAD1FD4F541F18F5DDBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -595,44 +539,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -652,16 +559,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		70E24078383B657D86213BBBD1FC1EF5 /* Release */ = {
+		2A07D74C1D03DDD1E3A498445EF728AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 559C8232176EB3CD88D42F9324F9A272 /* Pods-ThePuzzChat.release.xcconfig */;
+			baseConfigurationReference = 2FE8445ADE470CA2A08F33481C2B1805 /* Pods-ThePuzzChatTests.release.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -670,18 +580,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChat/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChatTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChat/Pods-ThePuzzChat.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChatTests/Pods-ThePuzzChatTests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ThePuzzChat;
+				PRODUCT_NAME = Pods_ThePuzzChatTests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -690,11 +600,48 @@
 			};
 			name = Release;
 		};
-		7F927BA660274741461FA00D1AFC29F6 /* Debug */ = {
+		64CD8DD7563F5E9FCF73980BCC24DDEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5B0C0C01CD362C56C27962BA57A4A0F /* Pods-ThePuzzChatUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChatUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChatUITests/Pods-ThePuzzChatUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ThePuzzChatUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		691223C2608F703F8212EEB3EEE86D59 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B483AFD674C883AD6619CB6F25B302F /* Pods-ThePuzzChatTests.debug.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -723,44 +670,13 @@
 			};
 			name = Debug;
 		};
-		B3957381E0CD6464EBC39158F86FFAFF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FE8445ADE470CA2A08F33481C2B1805 /* Pods-ThePuzzChatTests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChatTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChatTests/Pods-ThePuzzChatTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ThePuzzChatTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BCBBF9434E04EE43413A9C80CBB62B9D /* Debug */ = {
+		6CD30B8D58681892832C8FF9962C4CC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64D7163040F8EDAC68CCD0367B4578FF /* Pods-ThePuzzChatUITests.debug.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -789,41 +705,151 @@
 			};
 			name = Debug;
 		};
+		862AF3139CD84E18D34FAF2F43CD0DA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A81F923E91835D2F74BD406A3C11059C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E7BEDDA62ED11D446753E59BA5E2D01 /* Pods-ThePuzzChat.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChat/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChat/Pods-ThePuzzChat.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ThePuzzChat;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E824910C3003136B0E0057C10DD30E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 559C8232176EB3CD88D42F9324F9A272 /* Pods-ThePuzzChat.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ThePuzzChat/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ThePuzzChat/Pods-ThePuzzChat.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ThePuzzChat;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */,
-				3FA451D268613890FA8A5A03801E11D5 /* Release */,
+				13E96A645A77DAD1FD4F541F18F5DDBF /* Debug */,
+				862AF3139CD84E18D34FAF2F43CD0DA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9FA4F27A49EC2810E7F6ECDB77CED40D /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatUITests" */ = {
+		C02CA385A2AD2C70CCE9293C0670A79E /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BCBBF9434E04EE43413A9C80CBB62B9D /* Debug */,
-				32DE6CBADDBF65610E2307FF0790DC41 /* Release */,
+				6CD30B8D58681892832C8FF9962C4CC7 /* Debug */,
+				64CD8DD7563F5E9FCF73980BCC24DDEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9F6AA492567004D3964E541011B22B7 /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatTests" */ = {
+		DA52D34F6C9B4FB47493EC2808DA7DD1 /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7F927BA660274741461FA00D1AFC29F6 /* Debug */,
-				B3957381E0CD6464EBC39158F86FFAFF /* Release */,
+				A81F923E91835D2F74BD406A3C11059C /* Debug */,
+				E824910C3003136B0E0057C10DD30E49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BE8D463D04754B1805C1793122656B3C /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChat" */ = {
+		FCAFB515A9EAD65E79B41089B0149207 /* Build configuration list for PBXNativeTarget "Pods-ThePuzzChatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1B17F79ECD3217327ADB57887FB762FE /* Debug */,
-				70E24078383B657D86213BBBD1FC1EF5 /* Release */,
+				691223C2608F703F8212EEB3EEE86D59 /* Debug */,
+				2A07D74C1D03DDD1E3A498445EF728AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

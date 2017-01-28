@@ -12,7 +12,7 @@ class User: NSObject
 {
     static let sharedInstance = User()
     
-    private override init()
+    fileprivate override init()
     {
         
     }

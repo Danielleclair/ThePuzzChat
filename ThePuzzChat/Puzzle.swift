@@ -11,10 +11,10 @@ import UIKit
 
 enum Direction
 {
-    case Up
-    case Down
-    case Left
-    case Right
+    case up
+    case down
+    case left
+    case right
 }
 
 class Puzzle: NSObject
@@ -24,7 +24,7 @@ class Puzzle: NSObject
     var tiles : [Tile?] //Hash table of tiles indexed by their view tag
     var puzzle = [[Tile?]]()
     let image: UIImage
-    var timer: NSTimer?
+    var timer: Timer?
     var timerSeconds: Int
     var delegate: UIViewController
     
@@ -41,11 +41,11 @@ class Puzzle: NSObject
         image = _image
         
         //Create default arrays
-        tiles = [Tile?](count: (dimension * dimension), repeatedValue: nil)
+        tiles = [Tile?](repeating: nil, count: (dimension * dimension))
         
         for _ in 0..<dimension
         {
-            puzzle.append([Tile?](count: dimension, repeatedValue: nil))
+            puzzle.append([Tile?](repeating: nil, count: dimension))
         }
         
         super.init()
@@ -62,9 +62,9 @@ class Puzzle: NSObject
             for j in 0..<dimension
             {
                 //Create the position of the new image
-                let imagePositioning = CGRectMake(tileWidth * CGFloat(i), tileHeight * CGFloat(j), tileWidth, tileHeight)
+                let imagePositioning = CGRect(x: tileWidth * CGFloat(i), y: tileHeight * CGFloat(j), width: tileWidth, height: tileHeight)
                 
-                let tileImage = CGImageCreateWithImageInRect(image.CGImage, imagePositioning)
+                let tileImage = image.cgImage?.cropping(to: imagePositioning)
                 
                 var imgView: UIImageView
                 
@@ -74,12 +74,12 @@ class Puzzle: NSObject
                 }
                 else
                 {
-                    let img = UIImage(CGImage: tileImage!)
+                    let img = UIImage(cgImage: tileImage!)
                     imgView = UIImageView(image: img)
                 }
                 
                 imgView.tag = (i + (j * dimension))
-                imgView.userInteractionEnabled = true
+                imgView.isUserInteractionEnabled = true
                 addSwipeGestureRecognizerToImage(imgView)
                 
                 //Create the correct coordinate
@@ -136,9 +136,9 @@ class Puzzle: NSObject
     //------------------------------------------------------------------------------------------
     //Add the swipe gesture recognizers to the image view
     //------------------------------------------------------------------------------------------
-    private func addSwipeGestureRecognizerToImage(imgView: UIImageView)
+    fileprivate func addSwipeGestureRecognizerToImage(_ imgView: UIImageView)
     {
-        let directions: [UISwipeGestureRecognizerDirection] = [.Up, .Down, .Right, .Left]
+        let directions: [UISwipeGestureRecognizerDirection] = [.up, .down, .right, .left]
         for direction in directions
         {
             let swipeRecognizer = UISwipeGestureRecognizer()
@@ -153,7 +153,7 @@ class Puzzle: NSObject
     //Updates the puzzle by moving the tile with the given tag in a direction.
     //Return true on success, false if move cannot be made.
     //--------------------------------------------------------------------------
-    func SlideTileWithTag(tag: Int, direction: Direction) -> Bool
+    func SlideTileWithTag(_ tag: Int, direction: Direction) -> Bool
     {
         //Check that the tile exists
         if (tag >= tiles.count || tiles[tag] == nil)
@@ -164,7 +164,7 @@ class Puzzle: NSObject
         let tile = tiles[tag]!
         
         //Check to make sure tile isn't already at the top of the puzzle
-        if (direction == .Up && tile.CurrentPosition.1 != 0)
+        if (direction == .up && tile.CurrentPosition.1 != 0)
         {
             //Check to see if there is space to move the piece into, and that the piece selected to move exists
             if(puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1 - 1]!.isBlank && !puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1]!.isBlank)
@@ -180,7 +180,7 @@ class Puzzle: NSObject
                 return false
             }
         }
-        else if (direction == .Down && tile.CurrentPosition.1 < dimension - 1)
+        else if (direction == .down && tile.CurrentPosition.1 < dimension - 1)
         {
             //Check to see if there is space to move the piece into, and that the piece selected to move exists
             if(puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1 + 1]!.isBlank && !puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1]!.isBlank)
@@ -196,7 +196,7 @@ class Puzzle: NSObject
                 return false
             }
         }
-        else if (direction == .Left && tile.CurrentPosition.0 != 0)
+        else if (direction == .left && tile.CurrentPosition.0 != 0)
         {
             //Check to see if there is space to move the piece into, and that the piece selected to move exists
             if(puzzle[tile.CurrentPosition.0 - 1][tile.CurrentPosition.1]!.isBlank && !puzzle[tile.CurrentPosition.0][tile.CurrentPosition.1]!.isBlank)
@@ -212,7 +212,7 @@ class Puzzle: NSObject
                 return false
             }
         }
-        else if (direction == .Right && tile.CurrentPosition.0 < dimension - 1)
+        else if (direction == .right && tile.CurrentPosition.0 < dimension - 1)
         {
             print(tile.CurrentPosition)
             
@@ -233,7 +233,7 @@ class Puzzle: NSObject
         return false
     }
     
-    private func swapTile(inout tile: Tile, inout withTile: Tile)
+    fileprivate func swapTile(_ tile: inout Tile, withTile: inout Tile)
     {
         var correctPos = 0
         
@@ -272,7 +272,7 @@ class Puzzle: NSObject
         print(tilesInCorrectPosition)
     }
     
-    private func isInCorrectPosition(tile: Tile) -> Bool
+    fileprivate func isInCorrectPosition(_ tile: Tile) -> Bool
     {
         print(tile.CurrentPosition)
         print(tile.CorrectPosition)
@@ -286,7 +286,7 @@ class Puzzle: NSObject
         }
     }
     
-    private func checkWinCondition() -> Bool
+    fileprivate func checkWinCondition() -> Bool
     {
         if (tilesInCorrectPosition == (dimension * dimension))
         {
@@ -297,7 +297,4 @@ class Puzzle: NSObject
         return false
         
     }
-    
-   
-
 }

@@ -13,7 +13,7 @@ class PuzzatarCreationVC: UIViewController
 {
     @IBOutlet weak var UsernameTextField: UITextField!
     
-    @IBAction func CreateUserAccount(sender: AnyObject) {
+    @IBAction func CreateUserAccount(_ sender: AnyObject) {
         
         if (UsernameTextField.text != nil)
         {
@@ -22,8 +22,8 @@ class PuzzatarCreationVC: UIViewController
                 if (success)
                 {
                     
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.performSegueWithIdentifier("HomeScreenSegue", sender: nil)
+                    DispatchQueue.main.async(execute: {
+                        self.performSegue(withIdentifier: "HomeScreenSegue", sender: nil)
                     })
                 }
             })

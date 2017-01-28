@@ -13,7 +13,7 @@ class ShopVC: UIViewController, UIPopoverPresentationControllerDelegate
 {
     @IBOutlet weak var UsernameTextField: UITextField!
    
-    @IBAction func Submit(sender: AnyObject) {
+    @IBAction func Submit(_ sender: AnyObject) {
         
         if (UsernameTextField.text != nil)
         {

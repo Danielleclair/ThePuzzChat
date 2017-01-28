@@ -11,157 +11,181 @@ import UIKit
 
 class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPageViewControllerDataSource
 {
+    
+    private struct Constants {
+        static let tabBarHeight: CGFloat = 50.0
+    }
+    
+    let tabBar = UIView()
+    let accountBar = UIView()
+    
+    private enum Views: Int {
+        case PuzzView = 0
+        case FriendsView
+        case StoreView
+        case AccountView
+        case CreatePuzzView
+        
+        var storyboardID: String {
+            switch self {
+            case .PuzzView: return "PuzzView"
+            case .FriendsView: return "FriendsView"
+            case .StoreView: return "StoreView"
+            case .AccountView: return "AccountView"
+            case .CreatePuzzView: return "CreatePuzzView:"
+            }
+        }
+        
+        var iconName: String {
+            switch self {
+            case .PuzzView: return "PuzzIconSelected"
+            case .FriendsView: return "FriendIconSelected"
+            case .StoreView: return "StoreTabSelected"
+            case .AccountView: return "AccountIconSelected"
+            case .CreatePuzzView: return "CreateNewPuzz"
+            }
+        }
+        
+        var navigationAction: Selector {
+            switch self {
+            case .PuzzView: return #selector(navigateToPuzzView)
+            case .FriendsView: return #selector(navigateToFriendsView)
+            case .StoreView: return #selector(navigateToStoreView)
+            case .AccountView: return #selector(navigateToAccountView)
+            case .CreatePuzzView: return #selector(navigateToCreatePuzzView)
+            }
+        }
+    }
+    
     var selectedIndex = 0
     var tabButtons: [UIButton] = []
     var views: [UIViewController] = []
     
-  //  @IBOutlet weak var tabBar: UIView!
-    
     override func viewDidLoad() {
-        
-        
         dataSource = self
-        
-        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PuzzView")]
-        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FriendsView")]
-        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StoreView")]
-        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AccountView")]
-        
-        setViewControllers(([views.first!]), direction: .Forward, animated: false, completion: nil)
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        
-        if let indexOfCurrentView = views.indexOf(viewController)
-        {
-            let indexBeforeCurrentView = indexOfCurrentView - 1
-            
-            if (indexBeforeCurrentView < 0)
-            {
-                return nil
-            }
-            else
-            {
-                return views[indexBeforeCurrentView]
-            }
-        }
-        else
-        {
-            return nil
-        }
-        
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        
-        if let indexOfCurrentView = views.indexOf(viewController)
-        {
-            let indexAfterCurrentView = indexOfCurrentView + 1
-            
-            if (indexAfterCurrentView == views.count)
-            {
-                return nil
-            }
-            else
-            {
-                return views[indexAfterCurrentView]
-            }
-        }
-        else
-        {
-            return nil
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         let viewHeight = self.view.frame.height
         let viewWidth = self.view.frame.width
         
-        let tabBarHeight = viewHeight / 10
         let accountBarHeight = viewHeight / 20
+        let accountBar = UIView(frame: CGRect(x: 0, y: 20, width: viewWidth, height: accountBarHeight))
         
-        let tabBar = UIView(frame: CGRectMake(0, viewHeight - tabBarHeight, viewWidth, tabBarHeight))
-        let accountBar = UIView(frame: CGRectMake(0, 20, viewWidth, accountBarHeight))
-        
-        tabBar.backgroundColor = UIColor.darkGrayColor()
+        tabBar.backgroundColor = UIColor.darkGray
         
         self.view.addSubview(tabBar)
         self.view.addSubview(accountBar)
         
         let puzzPoint = UIImageView(image: UIImage(named: "PuzzPoint"))
-        puzzPoint.frame = CGRectMake(viewWidth / 25, 0, accountBarHeight, accountBarHeight)
+        puzzPoint.frame = CGRect(x: viewWidth / 25, y: 0, width: accountBarHeight, height: accountBarHeight)
         accountBar.addSubview(puzzPoint)
         
-        let puzzPointLabel = UILabel(frame: CGRectMake((viewWidth / 25) + accountBarHeight, 0, viewWidth / 4, accountBarHeight))
+        let puzzPointLabel = UILabel(frame: CGRect(x: (viewWidth / 25) + accountBarHeight, y: 0, width: viewWidth / 4, height: accountBarHeight))
         puzzPointLabel.text = "1000"
-        puzzPointLabel.textColor = UIColor.whiteColor()
+        puzzPointLabel.textColor = UIColor.white
         accountBar.addSubview(puzzPointLabel)
-     
-        let puzzButton = UIButton(frame: CGRectMake(0, 0, tabBar.frame.width / 5, tabBar.frame.height))
-        puzzButton.setImage(UIImage(named: "PuzzIconSelected"), forState: .Normal)
-        puzzButton.addTarget(self, action: #selector(HomeScreenVC.navigateToPuzzView), forControlEvents: .TouchUpInside)
-        tabBar.addSubview(puzzButton)
-        tabButtons += [puzzButton]
         
-        let friendsButton = UIButton(frame: CGRectMake(tabBar.frame.width / 5, 0, tabBar.frame.width / 5, tabBar.frame.height))
-        friendsButton.setImage(UIImage(named: "FriendsIconSelected"), forState: .Normal)
-        friendsButton.addTarget(self, action: #selector(HomeScreenVC.navigateToFriendsView), forControlEvents: .TouchUpInside)
-        tabBar.addSubview(friendsButton)
-        tabButtons += [friendsButton]
-         
-        let newPuzzButton = UIButton(frame: CGRectMake((tabBar.frame.width / 5) * 2, 0, tabBar.frame.width / 5, tabBar.frame.height))
-        newPuzzButton.setImage(UIImage(named: "CreateNewPuzz"), forState: .Normal)
-        newPuzzButton.addTarget(self, action: #selector(HomeScreenVC.CreateNewPuzz), forControlEvents: .TouchUpInside)
-        tabBar.addSubview(newPuzzButton)
-        tabButtons += [newPuzzButton]
-         
-        let storeButton = UIButton(frame: CGRectMake((tabBar.frame.width / 5) * 3, 0, tabBar.frame.width / 5, tabBar.frame.height))
-        storeButton.setImage(UIImage(named: "StoreTabSelected"), forState: .Normal)
-        storeButton.addTarget(self, action: #selector(HomeScreenVC.navigateToStoreView), forControlEvents: .TouchUpInside)
-        tabBar.addSubview(storeButton)
-        tabButtons += [storeButton]
-         
-        let accountButton = UIButton(frame: CGRectMake((tabBar.frame.width / 5) * 4, 0, tabBar.frame.width / 5, tabBar.frame.height))
-        accountButton.setImage(UIImage(named: "AccountIconSelected"), forState: .Normal)
-        accountButton.addTarget(self, action: #selector(HomeScreenVC.navigateToAccountView), forControlEvents: .TouchUpInside)
-        tabBar.addSubview(accountButton)
-        tabButtons += [accountButton]
+        configureTabBar()
     }
     
-    func navigateToPuzzView()
-    {
-        setViewControllers(([views[0]]), direction: .Forward, animated: false, completion: nil)
+    // MARK: Page view controller methods
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
+        guard let indexOfCurrentView = views.index(of: viewController) else { return nil }
+        let indexBeforeCurrentView = indexOfCurrentView - 1
+        guard indexBeforeCurrentView > 0 else { return nil }
+        return views[indexBeforeCurrentView]
     }
     
-    func navigateToFriendsView()
-    {
-        setViewControllers(([views[1]]), direction: .Forward, animated: false, completion: nil)
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        guard let indexOfCurrentView = views.index(of: viewController) else { return nil }
+        let indexAfterCurrentView = indexOfCurrentView + 1
+        guard indexAfterCurrentView < views.count else { return nil }
+        return views[indexAfterCurrentView]
     }
     
-    func navigateToStoreView()
-    {
-        setViewControllers(([views[2]]), direction: .Forward, animated: false, completion: nil)
+    // MARK: Helper methods
+    
+    private func createHomeScreenViews() {
+        
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Views.PuzzView.storyboardID)]
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Views.FriendsView.storyboardID)]
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Views.StoreView.storyboardID)]
+        views += [UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Views.AccountView.storyboardID)]
+        
+        guard let initialView = views.first else { return }
+        
+        setViewControllers(([initialView]), direction: .forward, animated: false, completion: nil)
     }
     
-    func navigateToAccountView()
-    {
-        setViewControllers(([views[3]]), direction: .Forward, animated: false, completion: nil)
+    private func navigate(toView view: Views) {
+        guard views.count > view.rawValue else { return }
+        setViewControllers([views[view.rawValue]], direction: .forward, animated: false, completion: nil)
     }
     
-    func CreateNewPuzz()
-    {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+    private func createHomeViewNavigationButton(withFrame frame: CGRect, view: Views) {
+        let navigationButton = UIButton(frame: frame)
+        navigationButton.setImage(UIImage(named: view.iconName), for: .normal)
+        navigationButton.addTarget(self, action: view.navigationAction, for: .touchUpInside)
+        tabBar.addSubview(navigationButton)
+        tabButtons += [navigationButton]
+    }
+    
+    private func configureNavigationButtons() {
+        createHomeViewNavigationButton(withFrame: CGRect(x: 0, y: 0, width: tabBar.frame.width / 5, height: tabBar.frame.height), view: .PuzzView)
+        createHomeViewNavigationButton(withFrame: CGRect(x: tabBar.frame.width / 5, y: 0, width: tabBar.frame.width / 5, height: tabBar.frame.height), view: .FriendsView)
+        createHomeViewNavigationButton(withFrame: CGRect(x: (tabBar.frame.width / 5) * 2, y: 0, width: tabBar.frame.width / 5, height: tabBar.frame.height), view: .CreatePuzzView)
+        createHomeViewNavigationButton(withFrame: CGRect(x: (tabBar.frame.width / 5) * 3, y: 0, width: tabBar.frame.width / 5, height: tabBar.frame.height), view: .StoreView)
+        createHomeViewNavigationButton(withFrame: CGRect(x: (tabBar.frame.width / 5) * 4, y: 0, width: tabBar.frame.width / 5, height: tabBar.frame.height), view: .AccountView)
+    }
+    
+    private func configureTabBar() {
+        let heightConstraint = tabBar.heightAnchor.constraint(equalToConstant: Constants.tabBarHeight)
+        let leadingAnchor = tabBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+        let trailingAnchor = tabBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        
+        NSLayoutConstraint.activate([heightConstraint, leadingAnchor, trailingAnchor])
+        configureNavigationButtons()
+    }
+    
+    // MARK: Target / action methods
+    
+    func navigateToPuzzView() {
+        navigate(toView: .PuzzView)
+    }
+    
+    func navigateToFriendsView() {
+        navigate(toView: .FriendsView)
+    }
+    
+    func navigateToStoreView() {
+        navigate(toView: .StoreView)
+    }
+    
+    func navigateToAccountView() {
+        navigate(toView: .AccountView)
+    }
+    
+    func navigateToCreatePuzzView() { // TODO: Implement
+        
+    }
+    
+    func CreateNewPuzz() { // TODO: Move to the create puzz controller
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             
             let imagePicker = UIImagePickerController()
             imagePicker.allowsEditing = true
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
             imagePicker.allowsEditing = false
             
-            var overlayFrame = imagePicker.view.bounds
+            let overlayFrame = imagePicker.view.bounds
             UIGraphicsBeginImageContext(overlayFrame.size)
-            UIRectFillUsingBlendMode(CGRectMake(0, imagePicker.navigationBar.bounds.size.height, overlayFrame.size.width, 300), .Normal);
+            UIRectFillUsingBlendMode(CGRect(x: 0, y: imagePicker.navigationBar.bounds.size.height, width: overlayFrame.size.width, height: 300), .normal);
             
             let overlayImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
@@ -172,7 +196,7 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
             imagePicker.cameraOverlayView = overlay
             
             
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
    

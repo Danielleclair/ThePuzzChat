@@ -24,11 +24,11 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate
         PasswordTextBox.delegate = self
     }
     
-    @IBAction func Back(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func Back(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func CreateAccount(sender: AnyObject) {
+    @IBAction func CreateAccount(_ sender: AnyObject) {
         
         if (EmailTextBox.text != nil)
         {
@@ -38,19 +38,19 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate
                     
                     if (!success)
                     {
-                        dispatch_async(dispatch_get_main_queue(), {
+                        DispatchQueue.main.async(execute: {
                             
-                            let alert = UIAlertController(title: "Account Creation Error", message: errorMessage, preferredStyle: .Alert)
-                            let okAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                            let alert = UIAlertController(title: "Account Creation Error", message: errorMessage, preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
                             alert.addAction(okAction)
-                            self.presentViewController(alert, animated: true, completion: nil)
+                            self.present(alert, animated: true, completion: nil)
                         })
                     }
                     else
                     {
                         //User created successfully
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.performSegueWithIdentifier("CreatePuzzatarSegue", sender: nil)
+                        DispatchQueue.main.async(execute: {
+                            self.performSegue(withIdentifier: "CreatePuzzatarSegue", sender: nil)
                         })
                     }
                 })
@@ -58,14 +58,14 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate
         }
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         ScrollView.setContentOffset(CGPoint(x: 0, y: 100.0), animated: true)
         return true
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         hideKeyboard()
         return true
     }

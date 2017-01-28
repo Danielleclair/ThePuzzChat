@@ -16,10 +16,10 @@ class SignInVC: UIViewController
     @IBOutlet weak var PasswordTextField: UITextField!
     
     @IBAction func BackButton() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func SignIn(sender: AnyObject) {
+    @IBAction func SignIn(_ sender: AnyObject) {
         
         if (EmailTextField.text != nil)
         {
@@ -30,14 +30,14 @@ class SignInVC: UIViewController
                     
                     if (success)
                     {
-                        self.performSegueWithIdentifier("SignInSegue", sender: nil)
+                        self.performSegue(withIdentifier: "SignInSegue", sender: nil)
                     }
                     else
                     {
-                        let alert = UIAlertController(title: "Sign In Error", message: message, preferredStyle: .Alert)
-                        let okAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                        let alert = UIAlertController(title: "Sign In Error", message: message, preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
                         alert.addAction(okAction)
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        self.present(alert, animated: true, completion: nil)
                     }
                 })
                 

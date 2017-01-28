@@ -26,7 +26,7 @@ class LandingPageVC: UIViewController
          
             if (authorized && usernameSelected)
             {
-                self.performSegueWithIdentifier("userAuthSegue", sender: nil)
+                self.performSegue(withIdentifier: "userAuthSegue", sender: nil)
                 self.showInterface()
             }
             else if (authorized && !usernameSelected)
@@ -42,20 +42,20 @@ class LandingPageVC: UIViewController
         
     }
     
-    private func hideInterface()
+    fileprivate func hideInterface()
     {
-        ActivityIndicator.hidden = false
+        ActivityIndicator.isHidden = false
         ActivityIndicator.startAnimating()
-        CreateAccountButton.hidden = true
-        SignInButton.hidden = true
+        CreateAccountButton.isHidden = true
+        SignInButton.isHidden = true
     }
     
-    private func showInterface()
+    fileprivate func showInterface()
     {
-        ActivityIndicator.hidden = true
+        ActivityIndicator.isHidden = true
         ActivityIndicator.stopAnimating()
-        CreateAccountButton.hidden = false
-        SignInButton.hidden = false
+        CreateAccountButton.isHidden = false
+        SignInButton.isHidden = false
     }
     
 }
