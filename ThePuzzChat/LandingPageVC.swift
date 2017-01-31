@@ -11,8 +11,6 @@ import UIKit
 
 class LandingPageVC: UIViewController
 {
-    
-        
     @IBOutlet weak var CreateAccountButton: UIButton!
     @IBOutlet weak var SignInButton: UIButton!
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!

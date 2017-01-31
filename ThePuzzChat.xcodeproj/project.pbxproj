@@ -37,6 +37,7 @@
 		33EC1FB91D3B1253001823EA /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC1FB81D3B1253001823EA /* SignInVC.swift */; };
 		33EC1FBB1D3DA4A8001823EA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC1FBA1D3DA4A8001823EA /* Message.swift */; };
 		87C82AAF32926D4BD3B587BE /* Pods_ThePuzzChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D706EC45D399742D35B8D46A /* Pods_ThePuzzChat.framework */; };
+		F132F58A1E3DAADC00015915 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F132F5891E3DAADC00015915 /* HomeScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		D706EC45D399742D35B8D46A /* Pods_ThePuzzChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePuzzChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6023338CE9A293D93B38062 /* Pods-ThePuzzChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePuzzChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThePuzzChatTests/Pods-ThePuzzChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7065AABEA91CA68B1DE59A6 /* Pods-ThePuzzChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePuzzChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThePuzzChatUITests/Pods-ThePuzzChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F132F5891E3DAADC00015915 /* HomeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,11 +156,11 @@
 		330A7A8C1D28F296007FEABB /* ThePuzzChat */ = {
 			isa = PBXGroup;
 			children = (
+				F132F5881E3DAA1F00015915 /* Storyboards */,
 				33EC1FBE1D3DA53B001823EA /* Controllers */,
 				33EC1FBD1D3DA4F3001823EA /* ViewControllers */,
 				33EC1FBC1D3DA4B7001823EA /* Models */,
 				33A62E8E1D34D891005579AE /* GoogleService-Info.plist */,
-				330A7A911D28F296007FEABB /* Main.storyboard */,
 				330A7A971D28F296007FEABB /* Assets.xcassets */,
 				330A7A991D28F296007FEABB /* LaunchScreen.storyboard */,
 				330A7A9C1D28F296007FEABB /* Info.plist */,
@@ -247,6 +249,15 @@
 				62783ABBF3241DF9912C6FF2 /* Pods_ThePuzzChatUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F132F5881E3DAA1F00015915 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				330A7A911D28F296007FEABB /* Main.storyboard */,
+				F132F5891E3DAADC00015915 /* HomeScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F132F58A1E3DAADC00015915 /* HomeScreen.storyboard in Resources */,
 				330A7A9B1D28F296007FEABB /* LaunchScreen.storyboard in Resources */,
 				33A62E8F1D34D891005579AE /* GoogleService-Info.plist in Resources */,
 				330A7A981D28F296007FEABB /* Assets.xcassets in Resources */,

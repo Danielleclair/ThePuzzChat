@@ -96,29 +96,19 @@ class FirebaseManager: NSObject
         authenticationReference?.createUser(withEmail: email, password: password, completion: { (user, error) in
             
             //Check for errors
-            if let error = error
+            if let error = error?._code, let errorCode = FIRAuthErrorCode(rawValue: error)
             {
-                /*
-                if (error.code == FIRAuthErrorCode.errorCodeEmailAlreadyInUse.rawValue)
-                {
-                    callback(false, "Error - Email already in use")
-                }
-                else if (error.code == FIRAuthErrorCode.errorCodeWeakPassword.rawValue)
-                {
-                    callback(false, "Error - Weak password")
-                }
-                else
-                {
-                    callback(false, "An error occured")
+                switch errorCode {
+                case .errorCodeEmailAlreadyInUse: callback(false, "Error - Email already in use")
+                case .errorCodeWeakPassword: callback(false, "Error - Email already in use")
+                default: callback(false, "Error fetching user account")
                 }
             }
-            else
-            {
+            else {
                 //Get the unique ID and create user
-                if (user != nil)
-                {
+                if let user = user {
                     let newUser = User.sharedInstance
-                    newUser.userID = user!.uid
+                    newUser.userID = user.uid
                     newUser.email = email
                 
                     callback(true, nil)
@@ -127,7 +117,6 @@ class FirebaseManager: NSObject
                 {
                     callback(false, "Error fetching user account")
                 }
-*/
             }
         })
     }
@@ -139,36 +128,24 @@ class FirebaseManager: NSObject
     {
         authenticationReference?.signIn(withEmail: email, password: password, completion: { (user, error) in
     
-            if (error == nil)
-            {
-                if (user != nil)
+            if let error = error?._code, let errorCode = FIRAuthErrorCode(rawValue: error) {
+                
+                switch errorCode {
+                case .errorCodeInvalidEmail: callback(false, "Error - Email not recognized")
+                case .errorCodeWrongPassword: callback(false, "Error - Incorrect password entered")
+                default: callback(false, "Error - Sign in error")
+                }
+            } else  {
+                if let user = user
                 {
                     let newUser = User.sharedInstance
                     newUser.email = email
-                    newUser.userID = user!.uid
+                    newUser.userID = user.uid
                     
-                    //self.getUserData(user!.uid)
-                    self.getInboxMessage(user!.uid)
+                    self.getInboxMessage(user.uid)
             
                     callback(true, nil)
                 }
-            }
-            else
-            {
-                /*
-                if (error!.code == FIRAuthErrorCode.errorCodeInvalidEmail.rawValue)
-                {
-                    callback(false, "Error - Email not recognized")
-                }
-                else if (error!.code == FIRAuthErrorCode.errorCodeWrongPassword.rawValue)
-                {
-                    callback(false, "Error - Incorrect password entered")
-                }
-                else
-                {
-                    callback(false, "Error - Sign in error")
-                }
- */
             }
         })
     }
