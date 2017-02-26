@@ -2,7 +2,7 @@
 //  Friend.swift
 //  ThePuzzChat
 //
-//  Created by Danielle Leclair on 7/20/16.
+//  Created by Daniel Leclair on 7/20/16.
 //  Copyright © 2016 Daniel Leclair. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ class Friend: NSObject
 {
     let userID: String
     let userName: String
-    let requestAccepted: Bool
+    let requestAccepted: Int
     
-    init(_userID: String, _userName: String, _requestAccepted: Bool) {
+    init(_userID: String, _userName: String, _requestAccepted: Int) {
         userID = _userID
         userName = _userName
         requestAccepted = _requestAccepted

@@ -87,6 +87,9 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
     var selectedIndex = 0
     var tabButtons: [UIButton] = []
     var views: [UIViewController] = []
+    private var selectedView: Views?  {
+       return Views(rawValue: selectedIndex) ?? nil
+    }
     
     override func viewDidLoad() {
         dataSource = self
@@ -170,6 +173,7 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
         navigationButton.setImage(UIImage(named: view.iconName), for: .normal)
         navigationButton.addTarget(self, action: view.navigationAction, for: .touchUpInside)
         tabBar.addArrangedSubview(navigationButton)
+        guard view != .CreatePuzzView else { return } //Create puzz shouldn't be scrollable
         tabButtons += [navigationButton]
     }
     
@@ -180,6 +184,7 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
             if let viewType = Views.viewTypeForController(viewController: view) {
                 
                 if view == viewController {
+                    selectedIndex = i
                     tabButtons[i].setImage(UIImage(named: viewType.selectedIconName), for: .normal)
                 } else {
                     tabButtons[i].setImage(UIImage(named: viewType.iconName), for: .normal)
@@ -193,12 +198,7 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
     
         createHomeViewNavigationButton(view: .PuzzView)
         createHomeViewNavigationButton(view: .FriendsView)
-        
-        let createPuzzButton = UIButton()
-        createPuzzButton.setImage(UIImage(named: Views.CreatePuzzView.iconName), for: .normal)
-        tabBar.addArrangedSubview(createPuzzButton)
-    
-       // createHomeViewNavigationButton(view: .CreatePuzzView)
+        createHomeViewNavigationButton(view: .CreatePuzzView)
         createHomeViewNavigationButton(view: .StoreView)
         createHomeViewNavigationButton(view: .AccountView)
 
@@ -212,28 +212,61 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
         tabBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([heightConstraint, leadingAnchor, trailingAnchor, bottomAnchor])
         configureNavigationButtons()
+        setInitialTab()
+    }
+    
+    private func setInitialTab() {
+        if let first = views.first {
+            setSelected(viewController: first)
+        }
     }
     
     // MARK: Target / action methods
     
     func navigateToPuzzView() {
+        selectedIndex = 0
         navigate(toView: .PuzzView)
     }
     
     func navigateToFriendsView() {
+        selectedIndex = 1
         navigate(toView: .FriendsView)
     }
     
     func navigateToStoreView() {
+        selectedIndex = 2
         navigate(toView: .StoreView)
     }
     
     func navigateToAccountView() {
+        selectedIndex = 3
         navigate(toView: .AccountView)
     }
     
     func navigateToCreatePuzzView() { // TODO: Implement
         
+        if let view = selectedView {
+            switch view {
+            case .PuzzView: break
+            case .FriendsView:
+                if let addFriendModal = UINib(nibName: "AddFriendVC", bundle: nil).instantiate(withOwner: self, options: nil)[0] as? AddFriendVC {
+                    addFriendModal.modalPresentationStyle = .overCurrentContext
+                    self.present(addFriendModal, animated: true, completion: nil)
+                }
+               
+            case .StoreView: break
+            case .AccountView: break
+            case .CreatePuzzView: break
+            default: break
+            }
+        }
+        
+        //let viewController = UIViewController()
+        CameraController.sharedInstance.TakePhoto(withCamera: .front)
+        //self.navigationController?.modalPresentationStyle = .formSheet
+        //self.navigationController?.present(viewController, animated: true, completion: nil)
+        
+    
     }
     
     func CreateNewPuzz() { // TODO: Move to the create puzz controller

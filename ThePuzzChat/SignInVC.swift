@@ -16,34 +16,23 @@ class SignInVC: UIViewController
     @IBOutlet weak var PasswordTextField: UITextField!
     
     @IBAction func BackButton() {
-        self.dismiss(animated: true, completion: nil)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func SignIn(_ sender: AnyObject) {
-        
+            
         if (EmailTextField.text != nil)
         {
             if (PasswordTextField.text != nil)
             {
-               
                 FirebaseManager.sharedInstance.SignIn(EmailTextField.text!, password: PasswordTextField.text!, callback: { (success, message) in
-                    
-                    if (success)
-                    {
-                        self.performSegue(withIdentifier: "SignInSegue", sender: nil)
-                    }
-                    else
-                    {
+                    if (!success) {
                         let alert = UIAlertController(title: "Sign In Error", message: message, preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
                         alert.addAction(okAction)
                         self.present(alert, animated: true, completion: nil)
                     }
                 })
-                
-                
-                
-                
             }
         }
     }

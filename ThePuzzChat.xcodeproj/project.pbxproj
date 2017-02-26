@@ -37,6 +37,10 @@
 		33EC1FB91D3B1253001823EA /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC1FB81D3B1253001823EA /* SignInVC.swift */; };
 		33EC1FBB1D3DA4A8001823EA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC1FBA1D3DA4A8001823EA /* Message.swift */; };
 		87C82AAF32926D4BD3B587BE /* Pods_ThePuzzChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D706EC45D399742D35B8D46A /* Pods_ThePuzzChat.framework */; };
+		F11A28571E40635A0028FCA1 /* CreatePuzzchat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11A28561E40635A0028FCA1 /* CreatePuzzchat.swift */; };
+		F11A28591E40642A0028FCA1 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11A28581E40642A0028FCA1 /* CameraController.swift */; };
+		F11A285D1E419EB40028FCA1 /* AddFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11A285C1E419EB40028FCA1 /* AddFriendVC.swift */; };
+		F11A28611E42D72C0028FCA1 /* AddFriendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11A28601E42D72C0028FCA1 /* AddFriendVC.xib */; };
 		F132F58A1E3DAADC00015915 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F132F5891E3DAADC00015915 /* HomeScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +104,10 @@
 		D706EC45D399742D35B8D46A /* Pods_ThePuzzChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePuzzChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6023338CE9A293D93B38062 /* Pods-ThePuzzChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePuzzChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThePuzzChatTests/Pods-ThePuzzChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7065AABEA91CA68B1DE59A6 /* Pods-ThePuzzChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePuzzChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThePuzzChatUITests/Pods-ThePuzzChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F11A28561E40635A0028FCA1 /* CreatePuzzchat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePuzzchat.swift; sourceTree = "<group>"; };
+		F11A28581E40642A0028FCA1 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		F11A285C1E419EB40028FCA1 /* AddFriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
+		F11A28601E42D72C0028FCA1 /* AddFriendVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFriendVC.xib; sourceTree = "<group>"; };
 		F132F5891E3DAADC00015915 /* HomeScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +223,8 @@
 				33EC1FAE1D38C188001823EA /* CreateAccountVC.swift */,
 				33A62E8A1D334446005579AE /* FriendsListVC.swift */,
 				33DC07EA1D4838AB00CEF787 /* ShopVC.swift */,
+				F11A28561E40635A0028FCA1 /* CreatePuzzchat.swift */,
+				F11A285C1E419EB40028FCA1 /* AddFriendVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -224,6 +234,7 @@
 			children = (
 				330A7A8D1D28F296007FEABB /* AppDelegate.swift */,
 				33A62E901D34DDC4005579AE /* FirebaseManager.swift */,
+				F11A28581E40642A0028FCA1 /* CameraController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 			children = (
 				330A7A911D28F296007FEABB /* Main.storyboard */,
 				F132F5891E3DAADC00015915 /* HomeScreen.storyboard */,
+				F11A28601E42D72C0028FCA1 /* AddFriendVC.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -377,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11A28611E42D72C0028FCA1 /* AddFriendVC.xib in Resources */,
 				F132F58A1E3DAADC00015915 /* HomeScreen.storyboard in Resources */,
 				330A7A9B1D28F296007FEABB /* LaunchScreen.storyboard in Resources */,
 				33A62E8F1D34D891005579AE /* GoogleService-Info.plist in Resources */,
@@ -545,10 +558,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A62E911D34DDC4005579AE /* FirebaseManager.swift in Sources */,
+				F11A28591E40642A0028FCA1 /* CameraController.swift in Sources */,
 				33A62E871D333F19005579AE /* MessageCellVC.swift in Sources */,
 				33EC1FB51D38DE5F001823EA /* PuzzatarCreationVC.swift in Sources */,
 				33A62E8D1D336B0F005579AE /* FriendCellVC.swift in Sources */,
 				33EC1FB31D38CA45001823EA /* User.swift in Sources */,
+				F11A285D1E419EB40028FCA1 /* AddFriendVC.swift in Sources */,
 				330A7A961D28F296007FEABB /* ThePuzzChat.xcdatamodeld in Sources */,
 				33EC1FB91D3B1253001823EA /* SignInVC.swift in Sources */,
 				33A62E8B1D334446005579AE /* FriendsListVC.swift in Sources */,
@@ -564,6 +579,7 @@
 				33DC07ED1D48B71700CEF787 /* AccountVC.swift in Sources */,
 				330A7A8E1D28F296007FEABB /* AppDelegate.swift in Sources */,
 				33EC1FBB1D3DA4A8001823EA /* Message.swift in Sources */,
+				F11A28571E40635A0028FCA1 /* CreatePuzzchat.swift in Sources */,
 				33EC1FB71D38E85F001823EA /* TestVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,10 +21,8 @@ class PuzzatarCreationVC: UIViewController
                 
                 if (success)
                 {
-                    
-                    DispatchQueue.main.async(execute: {
-                        self.performSegue(withIdentifier: "HomeScreenSegue", sender: nil)
-                    })
+                    let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeScreenVC")
+                    self.navigationController?.pushViewController(viewController, animated: true)
                 }
             })
         }

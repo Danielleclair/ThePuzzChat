@@ -13,6 +13,7 @@ class AccountVC: UIViewController
 {
     @IBAction func SignOut() {
         FirebaseManager.sharedInstance.SignOut()
+        self.navigationController?.popToRootViewController(animated: true)
     }
    
     override func viewDidLoad() {

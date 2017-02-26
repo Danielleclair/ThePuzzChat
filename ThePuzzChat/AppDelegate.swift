@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         let s = FirebaseManager.sharedInstance
         
-        
         return true
     }
 

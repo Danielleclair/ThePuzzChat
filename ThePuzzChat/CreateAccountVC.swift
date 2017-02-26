@@ -38,20 +38,15 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate
                     
                     if (!success)
                     {
-                        DispatchQueue.main.async(execute: {
-                            
-                            let alert = UIAlertController(title: "Account Creation Error", message: errorMessage, preferredStyle: .alert)
-                            let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-                            alert.addAction(okAction)
-                            self.present(alert, animated: true, completion: nil)
-                        })
+                        let alert = UIAlertController(title: "Account Creation Error", message: errorMessage, preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                        alert.addAction(okAction)
+                        self.present(alert, animated: true, completion: nil)
                     }
                     else
                     {
                         //User created successfully
-                        DispatchQueue.main.async(execute: {
-                            self.performSegue(withIdentifier: "CreatePuzzatarSegue", sender: nil)
-                        })
+                        self.performSegue(withIdentifier: "CreatePuzzatarSegue", sender: nil)
                     }
                 })
             }

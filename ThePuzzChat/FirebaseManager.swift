@@ -12,6 +12,8 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
+typealias AuthenticationResponse = (isAuthorized: Bool, hasCreatedPuzzatar: Bool)
+
 class FirebaseManager: NSObject
 {
     static let sharedInstance = FirebaseManager()
@@ -24,6 +26,7 @@ class FirebaseManager: NSObject
     let usersReference: FIRDatabaseReference //Reference to the user data
     let friendsListReference: FIRDatabaseReference //Reference to friendslist data
     let inboxReference: FIRDatabaseReference //Reference to the inbox data
+    let emailReference: FIRDatabaseReference //Reference to user email / UID associations
     
     fileprivate override init()
     {
@@ -36,6 +39,7 @@ class FirebaseManager: NSObject
         usersReference = databaseReference.child("users")
         friendsListReference = databaseReference.child("friends")
         inboxReference = databaseReference.child("inbox")
+        emailReference = databaseReference.child("email")
         
         //Get reference to user singleton
         user = User.sharedInstance
@@ -49,31 +53,31 @@ class FirebaseManager: NSObject
     //Callback indicates whether the user is logged in, and if a username has been chosen
     //respectively.
     //---------------------------------------------------------------------------------------------
-    func GetUserAuthState(_ callback: @escaping (Bool, Bool)->())
+    func GetUserAuthState(_ callback: @escaping (AuthenticationResponse)->())
     {
-        authenticationReference?.addStateDidChangeListener({ (auth, account) in
+        var firstAuthCall = true
+        authenticationReference?.addStateDidChangeListener({ [weak self] (auth, account) in
         
+            // Listener called twice when first added; ignore first callback
+            //guard firstAuthCall == false else { firstAuthCall = false; return}
+            
             if let account = account //User is signed in
             {
-                self.user.email = account.email
-                self.user.userID = account.uid
+                self?.user.email = account.email
+                self?.user.userID = account.uid
                 
-                self.getUserData(account.uid, callback: {(success) in
+                if let displayName = account.displayName {
+                    self?.user.userName = displayName
+                    callback((true, true))
+                    return
+                }
                 
-                    if (success)
-                    {
-                        callback(true, true) //User is signed in, and a username has been chosen
-                    }
-                    else
-                    {
-                        callback(true, false) //User is signed in, but no username has been chosen
-                    }
+                callback((true, false))
                 
-                })
+                debugPrint(account.displayName)
                 
                 //Observe for changes to inbox and friends list
-                self.getInboxMessage(account.uid)
-                self.getFriendsList(account.uid)
+                self?.addAllObservers(uid: account.uid)
                 
                 //Test
                 //self.getInboxMessage("123456789")
@@ -81,7 +85,7 @@ class FirebaseManager: NSObject
             }
             else
             {
-                callback(false, false) //Not signed in
+                callback((false, false)) //Not signed in
                 
                 //If user signed out, pop the navigation stack
             }
@@ -93,28 +97,31 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     func CreateNewUser(_ email: String, password: String, callback: @escaping (Bool, String?)->())
     {
-        authenticationReference?.createUser(withEmail: email, password: password, completion: { (user, error) in
+        authenticationReference?.createUser(withEmail: email, password: password, completion: { [weak self] (user, error) in
             
             //Check for errors
             if let error = error?._code, let errorCode = FIRAuthErrorCode(rawValue: error)
             {
                 switch errorCode {
                 case .errorCodeEmailAlreadyInUse: callback(false, "Error - Email already in use")
-                case .errorCodeWeakPassword: callback(false, "Error - Email already in use")
+                case .errorCodeWeakPassword: callback(false, "Error - Password does not meet requirements")
                 default: callback(false, "Error fetching user account")
                 }
-            }
-            else {
+            } else {
                 //Get the unique ID and create user
                 if let user = user {
                     let newUser = User.sharedInstance
                     newUser.userID = user.uid
                     newUser.email = email
-                
+                    
+                    let emailKey = email.replacingOccurrences(of: ".", with: "_") // Firebase cannot handle periods in keys
+        
+                    self?.inboxReference.child("inbox").child(user.uid)
+                    self?.friendsListReference.child("friends").child(user.uid)
+                    self?.emailReference.child(emailKey).setValue(["userID": user.uid])
+                    
                     callback(true, nil)
-                }
-                else
-                {
+                } else {
                     callback(false, "Error fetching user account")
                 }
             }
@@ -126,7 +133,7 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     func SignIn(_ email: String, password: String, callback: @escaping (Bool, String?)->())
     {
-        authenticationReference?.signIn(withEmail: email, password: password, completion: { (user, error) in
+        authenticationReference?.signIn(withEmail: email, password: password, completion: { [weak self] (user, error) in
     
             if let error = error?._code, let errorCode = FIRAuthErrorCode(rawValue: error) {
                 
@@ -142,7 +149,7 @@ class FirebaseManager: NSObject
                     newUser.email = email
                     newUser.userID = user.uid
                     
-                    self.getInboxMessage(user.uid)
+                    self?.addAllObservers(uid: user.uid)
             
                     callback(true, nil)
                 }
@@ -150,22 +157,24 @@ class FirebaseManager: NSObject
         })
     }
     
-    //MARK -- Database requests
+    // MARK: Database requests
     
     func AddNewUser(_ username: String, callback: (Bool)->())
     {
         let user = User.sharedInstance
         user.userName = username
         
-        if (user.userID != nil)
+        let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+        changeRequest?.displayName = username
+        
+        changeRequest?.commitChanges(completion: nil)
+        
+        if let userID = user.userID
         {
-            usersReference.child(User.sharedInstance.userID!).setValue(["username" : username, "uid" : user.userID!])
-            databaseReference.child("inbox").child(User.sharedInstance.userID!)
-            databaseReference.child("friends").child(User.sharedInstance.userID!)
+            usersReference.child(userID).setValue(["username" : username, "uid" : userID])
             
             //Register for updates
-            databaseReference.child("inbox").child("123456789").observe(.childAdded, with: { (snapshot) in
-                
+            databaseReference.child("inbox").child(userID).observe(.childAdded, with: { (snapshot) in
                 print(snapshot.value)
     
             })
@@ -193,7 +202,7 @@ class FirebaseManager: NSObject
     //Get user specific data from ID. On completion, callback is called to indicate whether user
     //was found successfully
     //---------------------------------------------------------------------------------------------
-    fileprivate func getUserData(_ userID: String, callback: @escaping (Bool)->())
+    private func getUserData(_ userID: String, callback: @escaping (Bool)->())
     {
         self.usersReference.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -212,8 +221,9 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     //Get messages from user inbox
     //---------------------------------------------------------------------------------------------
-    fileprivate func getInboxMessage(_ userID: String)
+    private func observeInboxMessage()
     {
+        guard let userID = User.sharedInstance.userID else { return }
         self.user.inbox.removeAll() //Update inbox
         
         self.databaseReference.child("inbox").child(userID).observe(.childAdded, with: { (snapshot) in
@@ -234,86 +244,51 @@ class FirebaseManager: NSObject
             }
         })
     }
+ 
+    //---------------------------------------------------------------------------------------------
+    //Add all observers
+    //---------------------------------------------------------------------------------------------
+    private func addAllObservers(uid: String) {
+        observeInboxMessage()
+        observeFriendsList()
+    }
+    
     
     //---------------------------------------------------------------------------------------------
     //Get friends list
     //---------------------------------------------------------------------------------------------
-    fileprivate func getFriendsList(_ userID: String)
+    private func observeFriendsList()
     {
-        self.databaseReference.child("friends").child(userID).observe(.value, with: { (snapshot) in
+        guard let userID = User.sharedInstance.userID else { return }
+        self.databaseReference.child("friends").child(userID).observe(.value, with: { [weak self] (snapshot) in
             
-            if ( snapshot.value is NSNull )
-            {
+            self?.user.friendsList.removeAll() //Update friendslist
+            
+            guard let data = snapshot.value as? [String : AnyObject] else { return }
+            
+            for _ in data {
+                guard let friendID = data["friendID"] as? String, let friendName = data["friendName"] as? String, let requestAccepted = data["requestAccepted"] as? Int else { continue }
                 
-                print("Does not exist")
-                
+                self?.user.friendsList += [Friend(_userID: friendID, _userName: friendName, _requestAccepted: requestAccepted)]
             }
-            else
-            {
-                self.user.friendsList.removeAll() //Update inbox
-                
-                if var data = snapshot.value as? [String : AnyObject]
-                {
-                    data = (data.values.first as? [String : AnyObject])!
-                    
-                    let friendID = data["friendID"] as! String
-                    let friendName = data["friendName"] as! String
-                    let requestAcceptedInt = data["requestAccepted"] as! Int
-                    
-                    let requestAccepted: Bool
-                    if (requestAcceptedInt == 0)
-                    {
-                        requestAccepted = false
-                    }
-                    else
-                    {
-                        requestAccepted = true
-                    }
-                    
-                    self.user.friendsList += [Friend(_userID: friendID, _userName: friendName, _requestAccepted: requestAccepted)]
-                    
+            
                     //Post notification of updated friendslist
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "FriendsListUpdated"), object: nil)
-                }
-
-            }
         })
     }
     
     //---------------------------------------------------------------------------------------------
-    //Add friend to friends list
+    //Add friend to friends list.
     //---------------------------------------------------------------------------------------------
-    func SendFriendRequestToUser(_ username: String, callback: @escaping (String)->())
+    func SendFriendRequest(with email: String)
     {
-        usersReference.queryOrdered(byChild: "username").queryEqual(toValue: username).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            
-            if ( snapshot.value is NSNull )
-            {
-                
-                callback("User does not exist")
-                
-            }
-            else
-            {
-                if let data = snapshot.value as? [String : AnyObject]
-                {
-                        //Check to make sure user isn't adding themself
-                        if (data["uid"] as? String != self.user.userID!)
-                        {
-                            print("Okay, adding user to friends")
-                            self.databaseReference.child("friends").child(data["uid"] as! String).child(self.user.userID!).setValue(["friendID" : self.user.userID!, "requestAccepted" : 0, "friendName" : self.user.userName!])
-                        }
-                        else
-                        {
-                            callback("Error - Cannot add self as friend")
-                        }
-                }
-            }
-            
-            }, withCancel: { (error) in
-                
-                //Return the error is the callback
-                callback("An error occurred")
+        guard User.sharedInstance.email != email else { return } // Can't add yourself as a friend
+        let email = email.replacingOccurrences(of: ".", with: "_") // Firebase cannot handle periods in keys
+        emailReference.child(email).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            guard let data = snapshot.value as? [String: AnyObject], let friendID = data["userID"] as? String else { return }
+            let user = User.sharedInstance
+            guard let uid = user.userID, let username = user.userName else  { return }
+            self?.friendsListReference.child(friendID).child(uid).setValue(["friendName" : username, "requestAccepted" : 0])
         })
     }
     
@@ -334,22 +309,15 @@ class FirebaseManager: NSObject
     }
     
     //---------------------------------------------------------------------------------------------
-    //Add new friend
-    //---------------------------------------------------------------------------------------------
-    func AddFriendWithEmail(_ email: String)
-    {
-        //authenticationReference.user
-    }
-    
-    //---------------------------------------------------------------------------------------------
     //Sign out of user's account
     //---------------------------------------------------------------------------------------------
-    func SignOut()
+    func SignOut() -> Bool
     {
         do {
             try authenticationReference?.signOut()
+            return true
         } catch {
+            return false
         }
-        
     }
 }

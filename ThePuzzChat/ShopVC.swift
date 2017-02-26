@@ -17,7 +17,7 @@ class ShopVC: UIViewController, UIPopoverPresentationControllerDelegate
         
         if (UsernameTextField.text != nil)
         {
-            FirebaseManager.sharedInstance.SendFriendRequestToUser(UsernameTextField.text!) { (String) in }
+            //FirebaseManager.sharedInstance.SendFriendRequestToUser(UsernameTextField.text!) { (String) in }
         }
     }
 }
