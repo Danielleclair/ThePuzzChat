@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
-class PuzzatarCreationVC: UIViewController
+class PuzzatarCreationVC: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var UsernameTextField: UITextField!
+    
+    override func viewDidLoad() {
+        UsernameTextField.delegate = self
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
     
     @IBAction func CreateUserAccount(_ sender: AnyObject) {
         
@@ -26,5 +32,14 @@ class PuzzatarCreationVC: UIViewController
                 }
             })
         }
+    }
+    
+    func dismissKeyboard() {
+        UsernameTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        UsernameTextField.resignFirstResponder()
+        return true
     }
 }

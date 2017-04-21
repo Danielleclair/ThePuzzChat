@@ -18,7 +18,7 @@ class LandingPageVC: UIViewController
     var authStatusFetched = false
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
         if !authStatusFetched {
             hideInterface()
         }

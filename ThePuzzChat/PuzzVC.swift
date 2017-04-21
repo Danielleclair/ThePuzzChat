@@ -14,8 +14,12 @@ class PuzzVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var messageFeed: UITableView!
     
     override func viewDidLoad() {
-        messageFeed.delegate = self
-        messageFeed.dataSource = self
+        //messageFeed.delegate = self
+        //messageFeed.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

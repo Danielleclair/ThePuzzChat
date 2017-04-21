@@ -8,15 +8,22 @@
 
 import Foundation
 
-class Friend: NSObject
+struct Friend
 {
-    let userID: String
-    let userName: String
-    let requestAccepted: Int
+    enum RequestStatus: Int {
+        case pending = 0
+        case accepted
+        case declined
+        case awaitingResponse
+    }
     
-    init(_userID: String, _userName: String, _requestAccepted: Int) {
-        userID = _userID
-        userName = _userName
-        requestAccepted = _requestAccepted
+    let userID: String?
+    let userName: String
+    let requestAccepted: RequestStatus
+    
+    init(userID: String? = nil, userName: String, requestAccepted: Int) {
+        self.userID = userID
+        self.userName = userName
+        self.requestAccepted = RequestStatus(rawValue: requestAccepted) ?? .declined
     }
 }

@@ -9,8 +9,11 @@
 import Foundation
 import UIKit
 
+protocol ShowAlert {
+    func showAlert(title: String?, message: String?)
+}
 
-class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSource
+class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ShowAlert
 {
     
     @IBOutlet weak var friendsList: UITableView!
@@ -34,25 +37,29 @@ class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell") as! FriendCellVC
+        cell.delegate = self
         
-        if (user != nil)
-        {
-            cell.friend = user!.friendsList[indexPath.row]
-            cell.Username.text = user!.userName!
-            
-            if (cell.friend!.requestAccepted)
-            {
-                cell.AcceptButton.isHidden = true
-                cell.DeclineButton.isHidden = true
-            }
-            else
-            {
-                cell.AcceptButton.isHidden = false
-                cell.DeclineButton.isHidden = false
-            }
-        }
-        
+        guard let user = user else { return cell }
 
+            cell.friend = user.friendsList[indexPath.row]
+            cell.Username.text = cell.friend?.userName
+        
+        switch user.friendsList[indexPath.row].requestAccepted {
+        case .accepted:
+            cell.RequestPendingLabel.isHidden = true
+            cell.AcceptButton.isHidden = true
+            cell.DeclineButton.isHidden = true
+        case .awaitingResponse:
+            cell.RequestPendingLabel.isHidden = false
+            cell.AcceptButton.isHidden = true
+            cell.DeclineButton.isHidden = true
+        case .pending:
+            cell.RequestPendingLabel.isHidden = true
+            cell.AcceptButton.isHidden = false
+            cell.DeclineButton.isHidden = false
+        case .declined: break
+            //TODO: Implement
+        }
         
         return cell
     }
@@ -71,5 +78,11 @@ class FriendsListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         friendsList.reloadData()
     }
     
+    func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
      
 }

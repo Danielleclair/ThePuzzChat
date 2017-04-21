@@ -11,30 +11,26 @@ import UIKit
 
 class CreateAccountVC: UIViewController, UITextFieldDelegate
 {
-    @IBOutlet weak var ScrollView: UIScrollView!
-    @IBOutlet weak var EmailTextBox: UITextField!
-    @IBOutlet weak var PasswordTextBox: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var emailTextBox: UITextField!
+    @IBOutlet weak var passwordTextBox: UITextField!
     
     override func viewDidLoad() {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.hideKeyboard))
         self.view.addGestureRecognizer(tapGestureRecognizer)
         
-        EmailTextBox.delegate = self
-        PasswordTextBox.delegate = self
-    }
-    
-    @IBAction func Back(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        emailTextBox.delegate = self
+        passwordTextBox.delegate = self
     }
     
     @IBAction func CreateAccount(_ sender: AnyObject) {
         
-        if (EmailTextBox.text != nil)
+        if (emailTextBox.text != nil)
         {
-            if (PasswordTextBox.text != nil)
+            if (passwordTextBox.text != nil)
             {
-                FirebaseManager.sharedInstance.CreateNewUser(EmailTextBox.text!, password: PasswordTextBox.text!, callback: { (success ,errorMessage) in
+                FirebaseManager.sharedInstance.CreateNewUser(emailTextBox.text!, password: passwordTextBox.text!, callback: { (success ,errorMessage) in
                     
                     if (!success)
                     {
@@ -54,8 +50,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
-        ScrollView.setContentOffset(CGPoint(x: 0, y: 100.0), animated: true)
+        showKeyboard()
         return true
         
     }
@@ -65,9 +60,14 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate
         return true
     }
     
+    func showKeyboard() {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 100.0), animated: true)
+
+    }
+    
     func hideKeyboard()
     {
         self.view.endEditing(true)
-        ScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 }

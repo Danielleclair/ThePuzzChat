@@ -12,6 +12,13 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
+enum PuzzChatError: String, Error {
+    case badEmail = "No account exists with this email address"
+    case selfAdd = "You cannot add yourself as a friend"
+    case alreadyFriends = "You and this user are already friends"
+    case incompleteAccount = "This user must complete account creation before you add them as a friend"
+}
+
 typealias AuthenticationResponse = (isAuthorized: Bool, hasCreatedPuzzatar: Bool)
 
 class FirebaseManager: NSObject
@@ -55,14 +62,12 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     func GetUserAuthState(_ callback: @escaping (AuthenticationResponse)->())
     {
-        var firstAuthCall = true
         authenticationReference?.addStateDidChangeListener({ [weak self] (auth, account) in
-        
-            // Listener called twice when first added; ignore first callback
-            //guard firstAuthCall == false else { firstAuthCall = false; return}
-            
             if let account = account //User is signed in
             {
+                //Observe for changes to inbox and friends list
+                self?.addAllObservers(uid: account.uid)
+                
                 self?.user.email = account.email
                 self?.user.userID = account.uid
                 
@@ -73,21 +78,10 @@ class FirebaseManager: NSObject
                 }
                 
                 callback((true, false))
-                
-                debugPrint(account.displayName)
-                
-                //Observe for changes to inbox and friends list
-                self?.addAllObservers(uid: account.uid)
-                
-                //Test
-                //self.getInboxMessage("123456789")
-                //self.getFriendsList("123456789")
             }
             else
             {
                 callback((false, false)) //Not signed in
-                
-                //If user signed out, pop the navigation stack
             }
         })
     }
@@ -143,16 +137,7 @@ class FirebaseManager: NSObject
                 default: callback(false, "Error - Sign in error")
                 }
             } else  {
-                if let user = user
-                {
-                    let newUser = User.sharedInstance
-                    newUser.email = email
-                    newUser.userID = user.uid
-                    
-                    self?.addAllObservers(uid: user.uid)
-            
                     callback(true, nil)
-                }
             }
         })
     }
@@ -172,6 +157,10 @@ class FirebaseManager: NSObject
         if let userID = user.userID
         {
             usersReference.child(userID).setValue(["username" : username, "uid" : userID])
+            
+            if let email = user.email {
+                emailReference.child(email).setValue(["username": username])
+            }
             
             //Register for updates
             databaseReference.child("inbox").child(userID).observe(.childAdded, with: { (snapshot) in
@@ -266,12 +255,14 @@ class FirebaseManager: NSObject
             
             guard let data = snapshot.value as? [String : AnyObject] else { return }
             
-            for _ in data {
-                guard let friendID = data["friendID"] as? String, let friendName = data["friendName"] as? String, let requestAccepted = data["requestAccepted"] as? Int else { continue }
+            //This loop needs to be reworked, the structure of the data parsing is not correct.
+            for friend in data {
+                let friendID = friend.0
+                guard let friendData = friend.value as? [String : AnyObject] else { return }
+                guard  let friendName = friendData["friendName"] as? String, let requestAccepted = friendData["requestAccepted"] as? Int else { continue }
                 
-                self?.user.friendsList += [Friend(_userID: friendID, _userName: friendName, _requestAccepted: requestAccepted)]
+                self?.user.friendsList += [Friend(userID: friendID, userName: friendName, requestAccepted: requestAccepted)]
             }
-            
                     //Post notification of updated friendslist
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "FriendsListUpdated"), object: nil)
         })
@@ -280,32 +271,64 @@ class FirebaseManager: NSObject
     //---------------------------------------------------------------------------------------------
     //Add friend to friends list.
     //---------------------------------------------------------------------------------------------
-    func SendFriendRequest(with email: String)
+    func SendFriendRequest(with email: String, success: @escaping (Error?)->())
     {
-        guard User.sharedInstance.email != email else { return } // Can't add yourself as a friend
+        // Can't add yourself as a friend
+        guard User.sharedInstance.email != email else {
+            success(PuzzChatError.selfAdd)
+            return
+        }
+        
         let email = email.replacingOccurrences(of: ".", with: "_") // Firebase cannot handle periods in keys
-        emailReference.child(email).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
-            guard let data = snapshot.value as? [String: AnyObject], let friendID = data["userID"] as? String else { return }
+
+        //Get user id from email
+        emailReference.child(email).observeSingleEvent(of: .value, with: { [weak self] snapshot in
             let user = User.sharedInstance
-            guard let uid = user.userID, let username = user.userName else  { return }
-            self?.friendsListReference.child(friendID).child(uid).setValue(["friendName" : username, "requestAccepted" : 0])
+            
+            guard let data = snapshot.value as? [String: AnyObject], let friendID = data["userID"] as? String else {
+                success(PuzzChatError.badEmail)
+                return
+            }
+            
+            guard let userID = user.userID else {
+                success(PuzzChatError.incompleteAccount)
+                return
+            }
+            
+            guard let username = user.userName else  { return }
+            
+            //Set your friends list
+            let updatedUserData = ["/\(userID)/\(friendID)": ["friendName": data["username"] ?? email as AnyObject, "requestAccepted": 3], "/\(friendID)/\(userID)": ["friendName" : username, "requestAccepted" : 0]]
+            self?.friendsListReference.updateChildValues(updatedUserData, withCompletionBlock: { (error, ref) -> Void in
+                success(error)
+            })
         })
     }
     
     //---------------------------------------------------------------------------------------------
     //Accept friend request
     //---------------------------------------------------------------------------------------------
-    func AcceptFriendRequest(_ userID: String)
+    func AcceptFriendRequest(_ friend: Friend, success: @escaping (Error?)->())
     {
-        databaseReference.child("friends").child(user.userID!).child(userID).updateChildValues(["requestAccepted": 1])
+        guard let userID = User.sharedInstance.userID, let friendID = friend.userID, let username = User.sharedInstance.userName else { return }
+        //Accept
+        let updatedUserData = ["/\(userID)/\(friendID)": ["friendName": friend.userName, "requestAccepted": 1], "/\(friendID)/\(userID)": ["friendName": username, "requestAccepted" : 1]]
+        friendsListReference.updateChildValues(updatedUserData, withCompletionBlock: { (error, ref) -> Void in
+            success(error)
+        })
     }
     
     //---------------------------------------------------------------------------------------------
     //Decline friend request
     //---------------------------------------------------------------------------------------------
-    func DeclineFriendRequest(_ userID: String)
+    func DeclineFriendRequest(_ friendID: String, success: @escaping (Error?)->())
     {
-        databaseReference.child("friends").child(user.userID!).child(userID).removeValue()
+        guard let userID = User.sharedInstance.userID else { return }
+        //Decline
+        let updatedUserData = ["/\(userID)/\(friendID)": ["requestAccepted": 2], "/\(friendID)/\(userID)": ["requestAccepted" : 2]]
+        friendsListReference.updateChildValues(updatedUserData, withCompletionBlock: { (error, ref) -> Void in
+            success(error)
+        })
     }
     
     //---------------------------------------------------------------------------------------------
@@ -314,6 +337,7 @@ class FirebaseManager: NSObject
     func SignOut() -> Bool
     {
         do {
+            databaseReference.removeAllObservers()
             try authenticationReference?.signOut()
             return true
         } catch {

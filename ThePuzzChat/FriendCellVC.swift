@@ -12,6 +12,7 @@ import UIKit
 class FriendCellVC: UITableViewCell
 {
     var friend: Friend?
+    var delegate: ShowAlert?
     
     @IBOutlet weak var Username: UILabel!
     @IBOutlet weak var RequestPendingLabel: UILabel!
@@ -21,17 +22,27 @@ class FriendCellVC: UITableViewCell
     
     @IBAction func AcceptRequest() {
         
-        if (friend != nil)
-        {
-            FirebaseManager.sharedInstance.AcceptFriendRequest(friend!.userID)
+        guard let friend = friend else {
+            self.delegate?.showAlert(title: nil, message: "Unable to accept request, please try again later")
+            return
         }
+        
+        FirebaseManager.sharedInstance.AcceptFriendRequest(friend, success: { error in
+            guard error != nil else { return }
+            self.delegate?.showAlert(title: nil, message: "Unable to accept request, please try again later")
+        })
     }
     
     @IBAction func DeclineRequest() {
         
-        if (friend != nil)
-        {
-            FirebaseManager.sharedInstance.DeclineFriendRequest(friend!.userID)
+        guard let userId = friend?.userID else {
+            self.delegate?.showAlert(title: nil, message: "Unable to decline request, please try again later")
+            return
         }
+        
+        FirebaseManager.sharedInstance.DeclineFriendRequest(userId, success: { error in
+            guard error != nil else { return }
+            self.delegate?.showAlert(title: nil, message: "Unable to decline request, please try again later")
+        })
     }
 }

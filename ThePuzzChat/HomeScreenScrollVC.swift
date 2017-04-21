@@ -262,7 +262,7 @@ class HomeScreenVC: UIPageViewController, UIImagePickerControllerDelegate, UINav
         }
         
         //let viewController = UIViewController()
-        CameraController.sharedInstance.TakePhoto(withCamera: .front)
+        //CameraController.sharedInstance.TakePhoto(withCamera: .front)
         //self.navigationController?.modalPresentationStyle = .formSheet
         //self.navigationController?.present(viewController, animated: true, completion: nil)
         

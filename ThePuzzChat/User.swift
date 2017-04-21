@@ -17,6 +17,11 @@ class User: NSObject
         
     }
     
+    enum AuthState {
+        case signedIn
+        case signedOut
+    }
+    
     var email: String?
     var userName: String?
     var userID: String?
